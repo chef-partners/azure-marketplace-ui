@@ -27,13 +27,13 @@
     }
   ],
   "icons": {
-    "small": "Icons\\Small.png",
-    "medium": "Icons\\Medium.png",
-    "large": "Icons\\Large.png",
-    "wide": "Icons\\Wide.png"
+    "small": "Icons\\cheflogo40x.png",
+    "medium": "Icons\\cheflogo90x.png",
+    "large": "Icons\\cheflogo115x.png",
+    "wide": "Icons\\cheflogo255xwide.png",
+    "hero": "Icons\\cheflogo815xhero.png"
   },
   "screenshots": [
-    "Screenshots\\Screenshot1.png"
   ],
   "links": [
     {
@@ -51,7 +51,7 @@
   "filters": [
     {
       "type": "HideKey",
-      "value": "microsoft_custom-script-windows"
+      "value": "chef_linuxchefextension"
     }
   ]
 }
