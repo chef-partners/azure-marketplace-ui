@@ -3,12 +3,12 @@
   "name": "chef-client:linux",
   "publisher": "chef-software",
   "version": "0.0.1",
-  "displayName": "Linux Chef Client",
-  "publisherDisplayName": "Chef Software",
-  "publisherLegalName": "Chef Software Inc.",
-  "summary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
-  "longSummary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
-  "description": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "displayName": "ms-resource:displayName",
+  "publisherDisplayName": "ms-resource:publisherDisplayName",
+  "publisherLegalName": "ms-resource:publisherDisplayName",
+  "summary": "ms-resource:summary",
+  "longSummary": "ms-resource:description",
+  "description": "ms-resource:description",
   "uiDefinition": {
     "path": "UiDefinition.json"
   },
@@ -24,7 +24,7 @@
       "type": "Custom",
       "path": "Artifacts\\CreateUiDefinition.json",
       "isDefault": false
-    },
+    }
   ],
   "icons": {
     "small": "Icons\\Small.png",
@@ -38,7 +38,11 @@
   "links": [
     {
       "displayName": "Chef Software",
-      "uri": "https://chef.io"
+      "uri": "ms-resource:siteurl"
+    },
+    {
+      "displayName": "Learn Chef",
+      "uri": "ms-resource:learnchef"
     }
   ],
   "categories": [
