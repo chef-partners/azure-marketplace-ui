@@ -1,0 +1,53 @@
+{
+  "$schema": "https://gallery.azure.com/schemas/2015-04-01/manifest.json#",
+  "name": "chef-client:linux",
+  "publisher": "chef-software",
+  "version": "0.0.1",
+  "displayName": "Linux Chef Client",
+  "publisherDisplayName": "Chef Software",
+  "publisherLegalName": "Chef Software Inc.",
+  "summary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "longSummary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "description": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "uiDefinition": {
+    "path": "UiDefinition.json"
+  },
+  "artifacts": [
+    {
+      "name": "MainTemplate",
+      "type": "Template",
+      "path": "Artifacts\\MainTemplate.json",
+      "isDefault": true
+    },
+    {
+      "name": "CreateUiDefinition",
+      "type": "Custom",
+      "path": "Artifacts\\CreateUiDefinition.json",
+      "isDefault": false
+    },
+  ],
+  "icons": {
+    "small": "Icons\\Small.png",
+    "medium": "Icons\\Medium.png",
+    "large": "Icons\\Large.png",
+    "wide": "Icons\\Wide.png"
+  },
+  "screenshots": [
+    "Screenshots\\Screenshot1.png"
+  ],
+  "links": [
+    {
+      "displayName": "Chef Software",
+      "uri": "https://chef.io"
+    }
+  ],
+  "categories": [
+    "compute-vmextension-linux"
+  ],
+  "filters": [
+    {
+      "type": "HideKey",
+      "value": "microsoft_custom-script-windows"
+    }
+  ]
+}

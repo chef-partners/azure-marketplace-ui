@@ -1,0 +1,48 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "chef_server_url": {
+      "type": "string"
+    },
+    "chef_node_name": {
+      "type": "string"
+    },
+    "run_list": {
+      "type": "string"
+    },
+    "validation_client_name": {
+      "type": "string"
+    },
+    "validation_key": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "name": "[concat(parameters('vmName'),'/LinuxChefExtension')]",
+      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "location": "[parameters('location')]",
+      "apiVersion": "2015-06-15",
+      "properties": {
+        "publisher": "Chef.Bootstrap.WindowsAzure",
+        "type": "LinuxChefClient",
+        "typeHandlerVersion": "1210.12.100",
+        "settings": {
+            "bootstrap_options": {
+                "chef_node_name": "[parameters('chef_node_name')]",
+                "chef_server_url": "[parameters('chef_server_url')]",
+                "validation_client_name": "[parameters('validation_client_name')]"
+            },
+            "runlist": "[parameters('runlist')]"
+        },
+        "protectedSettings": {
+          "validation_key": "[parameters('validation_key')]"
+        }
+      }
+    }
+  ]
+}
