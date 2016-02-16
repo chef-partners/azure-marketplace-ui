@@ -15,7 +15,7 @@
       "type": "string"
     },
     "validation_key": {
-      "type": "string"
+      "type": "securestring"
     },
     "location": {
       "type": "string"

@@ -43,6 +43,10 @@
     {
       "displayName": "Learn Chef",
       "uri": "ms-resource:learnchef"
+    },
+    {
+      "displayName": "Extension Source",
+      "uri": "ms-resource:extsource"
     }
   ],
   "categories": [
