@@ -37,7 +37,7 @@
                 "chef_server_url": "[parameters('chef_server_url')]",
                 "validation_client_name": "[parameters('validation_client_name')]"
             },
-            "runlist": "[parameters('runlist')]"
+            "runlist": "[parameters('run_list')]"
         },
         "protectedSettings": {
           "validation_key": "[parameters('validation_key')]"
