@@ -1,8 +1,8 @@
 {
   "$schema": "https://gallery.azure.com/schemas/2015-04-01/manifest.json#",
-  "name": "chef-client:linux",
+  "name": "chef-client-linux",
   "publisher": "chef-software",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "displayName": "ms-resource:displayName",
   "publisherDisplayName": "ms-resource:publisherDisplayName",
   "publisherLegalName": "ms-resource:publisherDisplayName",
