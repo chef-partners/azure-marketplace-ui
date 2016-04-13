@@ -23,7 +23,7 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('vmName'),'/LinuxChefExtension')]",
+      "name": "[concat(parameters('chef_node_name'),'/LinuxChefExtension')]",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "location": "[parameters('location')]",
       "apiVersion": "2015-06-15",
