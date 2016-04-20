@@ -30,7 +30,7 @@
       "properties": {
         "publisher": "Chef.Bootstrap.WindowsAzure",
         "type": "LinuxChefClient",
-        "typeHandlerVersion": "1210.12.102.1000",
+        "typeHandlerVersion": "1210.12",
         "settings": {
             "bootstrap_options": {
                 "chef_node_name": "[parameters('chef_node_name')]",
