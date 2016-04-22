@@ -2,7 +2,7 @@
   "handler": "Microsoft.Compute.VmExtension",
   "version": "0.0.1-preview",
   "parameters": {
-    "basics": [
+    "elements": [
       {
         "name": "chef_server_url",
         "type": "Microsoft.Common.TextBox",
