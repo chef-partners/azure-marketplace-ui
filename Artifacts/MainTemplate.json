@@ -41,7 +41,7 @@
                 "validation_client_name": "[parameters('validation_client_name')]"
             },
             "runlist": "[parameters('run_list')]",
-            "client_rb": "[oarameters('client_rb')]"
+            "client_rb": "[parameters('client_rb')]"
         },
         "protectedSettings": {
           "validation_key": "[parameters('validation_key')]"
