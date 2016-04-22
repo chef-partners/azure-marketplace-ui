@@ -17,6 +17,9 @@
     "validation_key": {
       "type": "securestring"
     },
+    "client_rb": {
+      "type": "string"
+    },
     "location": {
       "type": "string"
     }
@@ -37,7 +40,8 @@
                 "chef_server_url": "[parameters('chef_server_url')]",
                 "validation_client_name": "[parameters('validation_client_name')]"
             },
-            "runlist": "[parameters('run_list')]"
+            "runlist": "[parameters('run_list')]",
+            "client_rb": "[oarameters('client_rb')]"
         },
         "protectedSettings": {
           "validation_key": "[parameters('validation_key')]"

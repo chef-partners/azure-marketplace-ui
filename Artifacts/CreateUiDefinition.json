@@ -50,6 +50,18 @@
         "options": {
           "uploadMode": "file"
         }
+      },
+      {
+        "name": "client_rb",
+        "type": "Microsoft.Common.FileUpload",
+        "label": "Client Configuration File",
+        "toolTip": "Configuration file for chef-client",
+        "constraints": {
+          "required": false
+        },
+        "options": {
+          "uploadMode": "file"
+        }
       }
     ],
     "outputs": {
@@ -58,6 +70,7 @@
       "run_list": "[elements('run_list')]",
       "validation_client_name": "[elements('validation_client_name')]",
       "validation_key": "[elements('validation_key')]",
+      "client_rb": "[elements('client_rb')]",
       "location": "[location()]"
     }
   }
