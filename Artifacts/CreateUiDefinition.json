@@ -64,7 +64,7 @@
         }
       },
       {
-        "name": "boostrap_version",
+        "name": "bootstrap_version",
         "type": "Microsoft.Common.TextBox",
         "label": "Chef Client version",
         "toolTip": "Version of chef client to install.  Leave blank to install latest.",
