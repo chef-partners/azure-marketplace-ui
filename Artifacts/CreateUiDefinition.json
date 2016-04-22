@@ -2,7 +2,7 @@
   "handler": "Microsoft.Compute.VmExtension",
   "version": "0.0.1-preview",
   "parameters": {
-    "elements": [
+    "basics": [
       {
         "name": "chef_server_url",
         "type": "Microsoft.Common.TextBox",
@@ -62,6 +62,15 @@
         "options": {
           "uploadMode": "file"
         }
+      },
+      {
+        "name": "boostrap_version",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Chef Client version",
+        "toolTip": "Version of chef client to install.  Leave blank to install latest.",
+        "constraints": {
+          "required": false
+        }
       }
     ],
     "outputs": {
@@ -71,6 +80,7 @@
       "validation_client_name": "[elements('validation_client_name')]",
       "validation_key": "[elements('validation_key')]",
       "client_rb": "[elements('client_rb')]",
+      "bootstrap_version": "[elements('bootstrap_version')]",
       "location": "[location()]"
     }
   }
