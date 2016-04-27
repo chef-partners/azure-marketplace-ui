@@ -55,7 +55,6 @@
         "name": "client_rb",
         "type": "Microsoft.Common.FileUpload",
         "label": "Client Configuration File",
-        "defaultValue": "",
         "toolTip": "Configuration file for chef-client",
         "constraints": {
           "required": false

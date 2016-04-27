@@ -18,13 +18,15 @@
       "type": "securestring"
     },
     "client_rb": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": ""
     },
     "location": {
       "type": "string"
     },
     "bootstrap_version": {
-      "type": "string"
+      "type": "string",
+      "defaultValue": ""
     }
   },
   "resources": [
