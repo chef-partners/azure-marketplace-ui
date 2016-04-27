@@ -55,6 +55,7 @@
         "name": "client_rb",
         "type": "Microsoft.Common.FileUpload",
         "label": "Client Configuration File",
+        "defaultValue": "",
         "toolTip": "Configuration file for chef-client",
         "constraints": {
           "required": false
@@ -67,6 +68,7 @@
         "name": "bootstrap_version",
         "type": "Microsoft.Common.TextBox",
         "label": "Chef Client version",
+        "defaultValue": "",
         "toolTip": "Version of chef client to install.  Leave blank to install latest.",
         "constraints": {
           "required": false
