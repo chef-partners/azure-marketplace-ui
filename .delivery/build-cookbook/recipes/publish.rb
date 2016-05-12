@@ -7,7 +7,7 @@
 base_dir = File.expand_path("#{node['delivery']['workspace']['repo']}")
 
 # Recipe to ensure that the extension for all types is built in the correct directory
-node['default']['extension_type'].each |type|
+node['default']['extension_type'].each do |type|
 
   # determine the directory that the artifacts should be created in
   artifact_dir = File.join(base_dir, type)
