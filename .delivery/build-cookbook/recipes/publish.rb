@@ -6,7 +6,7 @@
 
 require 'json'
 
-output_dir = File.expand_path(File.join(__FILE__, "../../.."))
+output_dir = node['extension']['output']['dir']
 
 # Recipe to ensure that the extension for all types is built in the correct directory
 node['extension']['platforms'].each do |platform, details|

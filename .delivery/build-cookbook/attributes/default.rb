@@ -25,3 +25,6 @@ default['extension']['icons'] = [
   "cheflogo255xwide.png",
   "cheflogo815xhero.png"
 ]
+
+# Set the directory for the output
+default['extension']['output']['dir'] = "/tmp"
