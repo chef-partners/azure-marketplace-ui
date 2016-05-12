@@ -29,12 +29,12 @@ node['extension']['platforms'].each do |platform, details|
     recursive true
   end
 
-  directory "#{{platform}-icons-dir}" do
+  directory "#{platform}-icons-dir}" do
     path File.join(artifact_dir, 'Icons')
     recursive true
   end
 
-  directory "#{{platform}-strings-dir}" do
+  directory "#{platform}-strings-dir}" do
     path File.dirname(outputs["stringresources"])
     recursive true
   end
