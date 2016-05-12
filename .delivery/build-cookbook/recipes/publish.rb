@@ -26,7 +26,7 @@ node['delivery']['extension_type'].each do |type|
     path createuiddefinition_path
     source "CreateUIDefinition.json.erb"
     variables({
-        "extension_type" = type
+        "extension_type" => type
     })
   end
 
