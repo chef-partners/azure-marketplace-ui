@@ -63,7 +63,7 @@
           "uploadMode": "file"
         }
       }
-      <% if extension_type == 'linux' %>
+      <% if @extension_type == 'linux' %>
       ,
       {
         "name": "bootstrap_version",
@@ -84,7 +84,7 @@
       "validation_client_name": "[elements('validation_client_name')]",
       "validation_key": "[elements('validation_key')]",
       "client_rb": "[elements('client_rb')]",
-      <% if extension_type == 'linux' %>
+      <% if @extension_type == 'linux' %>
       "bootstrap_version": "[elements('bootstrap_version')]",
       <% end %>
       "location": "[location()]"
