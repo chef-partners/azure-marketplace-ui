@@ -27,11 +27,20 @@
     "bootstrap_version": {
       "type": "string",
       "defaultValue": ""
+    },
+    "vmName": {
+      "type": "string"
+    },
+    "ssl_verify_mode": {
+      "type": "string"
+    },
+    "chef_environment": {
+      "type": "string"
     }
   },
   "resources": [
     {
-      "name": "[concat(parameters('chef_node_name'),'/LinuxChefExtension')]",
+      "name": "[concat(parameters('vmName'),'/LinuxChefExtension')]",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "location": "[parameters('location')]",
       "apiVersion": "2015-06-15",
@@ -44,10 +53,12 @@
             "bootstrap_options": {
                 "chef_node_name": "[parameters('chef_node_name')]",
                 "chef_server_url": "[parameters('chef_server_url')]",
-                "validation_client_name": "[parameters('validation_client_name')]"
+                "validation_client_name": "[parameters('validation_client_name')]",
+                "node_ssl_verify_mode": "[parameters('ssl_verify_mode')]",
+                "environment": "[parameters('chef_environment')]"
             },
             "runlist": "[parameters('run_list')]",
-            "client_rb": "[parameters('client_rb')]"
+            "client_rb": "[concat(parameters('client_rb')]"
         },
         "protectedSettings": {
           "validation_key": "[parameters('validation_key')]"

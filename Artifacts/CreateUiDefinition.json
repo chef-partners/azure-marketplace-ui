@@ -72,6 +72,35 @@
         "constraints": {
           "required": false
         }
+      },
+      {
+        "name": "ssl_verify_mode",
+        "type": "Microsoft.Common.OptionsGroup",
+        "label": "SSL Verification Mode",
+        "defaultValue": "none",
+        "toolTip": "SSL peer verification during the chef-client run to the Chef server, default is Verify Peer",
+        "constraints": {
+          "allowedValues": [
+              {
+                  "label": "Verify None",
+                  "value": "none"
+              },
+              {
+                  "label": "Verify Peer",
+                  "value": "peer"
+              }
+          ],
+          "required": false
+        }
+      },
+      {
+        "name": "chef_environment",
+        "type": "Microsoft.Common.TextBox",
+        "label": "The Chef environment this machine will be placed into",
+        "defaultValue": "_default",
+        "constraints": {
+          "required": false
+        }
       }
     ],
     "outputs": {
@@ -82,7 +111,10 @@
       "validation_key": "[elements('validation_key')]",
       "client_rb": "[elements('client_rb')]",
       "bootstrap_version": "[elements('bootstrap_version')]",
-      "location": "[location()]"
+      "location": "[location()]",
+      "vmName": "[vmName()]",
+      "ssl_verify_mode": "[elements('ssl_verify_mode')]",
+      "chef_environment": "[elements('chef_environment')]"
     }
   }
 }
