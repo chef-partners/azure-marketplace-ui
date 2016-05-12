@@ -1,0 +1,30 @@
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "chef_server_url": {
+      "value": "https://api.opscode.com/organization/turtlesystems"
+    },
+    "chef_node_name": {
+      "value": "rjs-lin-02"
+    },
+    "run_list": {
+      "value": "recipe[logstash]"
+    },
+    "validation_client_name": {
+      "value": "turtlesystems-validator"
+    },
+    "validation_key": {
+      "value": "-----BEGIN RSA PRIVATE KEY-----\nMIIEowIBAAKCAQEAsj0yFNJrt5/t4mQyPpsJ4ZUEM/QiXclXlbJJ19jVSjQSuETN\naXzUT4wXiiAw5PF3BppjHPjdloQpkW6G8fXjM1JBCpPJrZQYJMJCF3VCqe68FDP0\nEktwob2CFBUoX+XwVVG6A7fDzBw4LQsQJa2iNIzKQJ2o0UW8/qlw30U/TPyKZ85E\nY/hEg+6bpTFo1LwYF7jJddKUWefRhniCYfhtiXyzM6Cs7PM/0h+nQvx/dvR0U8iF\nDC7HyKY47Xg1ZeeZHkRIrXivtJJ88a9V08qlhCUZi69mukKpAbtICtQKytKvpDA9\nnxIx6qBnueu9IIuHjE4FVEKlSK99V6u4LoeZLQIDAQABAoIBAGxthdXc2+JszA34\n3gfv0OcF+/SPA4kCPuG1/+3q3nWxj+HBGSSe55kso/VG9/eOXNYLfVfWnRY/d/oc\nvsLazkgeNar1lK6fdMCH3CThFJjDvm6b3FJ0yiPaYRNOe606+CUu/nXciKPWVuYv\n4LbLFe3Z5/++6T/FqN9SvHNWcNenlEDK9RgBRS/PIVe9limkyL5kgxNjhG6VZhl+\n5dvtKkZ2bHwU9FsVGd4DnPtGIXwumZP5T58h/7cFiW6VrDgfmtYA8LT7kLevO/Xo\n/eeTF6YSF51OZTlrn4t3kIbKRH2e91lm+7XXVOBSz0/FcPU3VvBMxeAFl/gAZzQh\nBSgj0pECgYEA7XftxhPp6TLANAf1K5Pjpw5r25ZX2C52yy5uZqlMUZf58/6gigBG\n2pkBsYR5zVMO6DJaVHmBhRZxbabk/E7jzh+kN5fODQbn4y96q+vY6b09vh0+wtUx\n7Em2hUL8VItGzxci5JDGmRNz+okN7fI0jYFFufHoCS0wrbDKynORQK8CgYEAwCX/\n8fPBbFbUcwaGJdVwRkbIISqDfqQl6wxQfRmPvTHYuHYnTYkIavTc9VCPTV0y5glR\nz4h4NAYIgrcoOlzTvlJb6FyoUBtQoRJI4Ph0Ave4I0NAQnKvijPm47gUdgLofXuF\nKP6Og5n4AZtGCIswMRZ9WgT3sqX8NZDJzdkcIuMCgYEAkmh8qsEgWGy339yAJiv6\nEcdsbGhXJKwRBdhMrPL4YN4Id4ynwi3FgYUQbDg3OIZbDIHu+2Imnr1llatuRrkE\n7tLHVpc7rQBy+7kMMu8oP4QziwFQ7qKvMvWHmMXh+OYd9BRZqP4x07MQsIjLk8be\n69el+6zP2MiJ2KzFeuihx3UCgYBE5NsSG338pF1kKLCsnAy3heV3ztB69cwKrM2n\nLSUWhurXqLWK3VlBUC5xXsMi0AnR5QGKUboXnRosFBO+aU4abVk6xQ4sOr78IZwz\n3aFq9vr02cYOjSRXfyiH+ZaMgZpuc31ZJ3xdvzTnDo9bvNw4nYGwZxuQ2GbHpfRV\ndETcVQKBgA4rqvRt6GBB48xjnhaTyg4FNUXM43XBNp+MO+co7o0yRSiVz8xSk6C8\nvtyj3GJldOOKxDQfYsE0RtobUa+vsGNlSCL2gfy7ER9MuFHfyGX1Mst26vovJKyC\nmaq2f4v7u/4QXxfKobolpLt/2/+h0MkrlcXBvIgCCLbtuWoTNRx3\n-----END RSA PRIVATE KEY-----"
+    },
+    "client_rb": {
+      "value": "environment \"fred\"\n"
+    },
+    "bootstrap_version": {
+      "value": ""
+    },
+    "location": {
+      "value": "westeurope"
+    }
+  }
+}
