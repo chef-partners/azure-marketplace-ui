@@ -18,9 +18,9 @@ node['extension']['platforms'].each do |platform, details|
   outputs = {
     "createuidefinition" => File.join(artifact_dir, 'Artifacts', 'CreateUIDefinition.json'),
     "maintemplate" => File.join(artifact_dir, 'Artifacts', 'MainTemplate.json'),
-    "manifest" => File.Join(artifact_dir, "Manifest.json"),
-    "stringresources" => File.json(artifact_dir, "Strings", "Resources.resjson"),
-    "uidefinition" => File.Join(artifact_dir, "UIDefinition.json"),
+    "manifest" => File.join(artifact_dir, "Manifest.json"),
+    "stringresources" => File.join(artifact_dir, "Strings", "Resources.resjson"),
+    "uidefinition" => File.join(artifact_dir, "UIDefinition.json"),
   }
 
   # Ensure that the directory exists for the path
