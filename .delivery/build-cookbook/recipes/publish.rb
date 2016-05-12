@@ -25,6 +25,9 @@ node['delivery']['extension_type'].each do |type|
   template "create-ui-definition" do
     path createuiddefinition_path
     source "CreateUIDefinition.json.erb"
+    variables({
+        "extension_type" = type
+    })
   end
 
 end
