@@ -1,0 +1,54 @@
+{
+  "$schema": "https://gallery.azure.com/schemas/2015-04-01/manifest.json#",
+  "name": "chef-client-linux",
+  "publisher": "chef-software",
+  "version": "<% node['extension']['version'] %>",
+  "displayName": "ms-resource:displayName",
+  "publisherDisplayName": "ms-resource:publisherDisplayName",
+  "publisherLegalName": "ms-resource:publisherDisplayName",
+  "summary": "ms-resource:summary",
+  "longSummary": "ms-resource:description",
+  "description": "ms-resource:description",
+  "uiDefinition": {
+    "path": "UiDefinition.json"
+  },
+  "artifacts": [
+    {
+      "name": "MainTemplate",
+      "type": "Template",
+      "path": "Artifacts\\MainTemplate.json",
+      "isDefault": true
+    },
+    {
+      "name": "CreateUiDefinition",
+      "type": "Custom",
+      "path": "Artifacts\\CreateUiDefinition.json",
+      "isDefault": false
+    }
+  ],
+  "icons": {
+    "small": "Icons\\cheflogo40x.png",
+    "medium": "Icons\\cheflogo90x.png",
+    "large": "Icons\\cheflogo115x.png",
+    "wide": "Icons\\cheflogo255xwide.png",
+    "hero": "Icons\\cheflogo815xhero.png"
+  },
+  "screenshots": [
+  ],
+  "links": [
+    {
+      "displayName": "Chef Software",
+      "uri": "ms-resource:siteurl"
+    },
+    {
+      "displayName": "Learn Chef",
+      "uri": "ms-resource:learnchef"
+    },
+    {
+      "displayName": "Extension Source",
+      "uri": "ms-resource:extsource"
+    }
+  ],
+  "categories": <%= @details['categories'].to_json %>
+  "filters": <%= @details['filters'].to_json %>
+}

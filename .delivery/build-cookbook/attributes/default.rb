@@ -1,3 +1,27 @@
 
 # Specify the flavours of extension that need to be built
-default['delivery']['extension_type'] = ['linux', 'windows']
+default['extension']['platforms']["linux"] = {
+  "type" => "LinuxChefClient",
+  "resource_name" => "LinuxChefExtension",
+  "categories" => ["compute-vmextension-linux"],
+  "filters" => []
+}
+
+default['extension']['platforms']["windows"] = {
+  "type" => "ChefClient",
+  "resource_name" => "WindowsChefExtension",
+  "categories" => ["compute-vmextension-windows"],
+  "filters" => []
+}
+
+# Set the version number of the extension
+default['extension']['version'] = "1.0.1"
+
+# Define the list if icons that need to be written out
+default['extension']['icons'] = [
+  "cheflogo40x.png",
+  "cheflogo90x.png",
+  "cheflogo115x.png",
+  "cheflogo255xwide.png",
+  "cheflogo815xhero.png"
+]
