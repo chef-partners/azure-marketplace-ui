@@ -18,4 +18,4 @@ node['default']['extension_type'].each |type|
     source "CreateUIDefinition.json.erb"
   end
 
-do
+end
