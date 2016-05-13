@@ -89,4 +89,15 @@ node['extension']['platforms'].each do |platform, details|
     path outputs["uidefinition"]
     source "UIDefinition.json"
   end
+
+  # Noe that all the files have been generated for each of the platforms execute the zip
+  # command to make zip file archives out of them
+  # generate the output filename
+  archive_file_path = File.join(node['extension']['output']['dir'], "azure-marketplace-ui-#{platform}-#{node['extension']['version']}.zip")
+  bash "#{platform}-zip-archive" do
+    cwd artifact_dir
+    code <<-EHO
+      zip -9 -r #{archive_file_path} #{platform}
+    EHO
+  end
 end
