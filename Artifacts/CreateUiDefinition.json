@@ -58,7 +58,8 @@
         "label": "Client Configuration File",
         "toolTip": "Configuration file for chef-client",
         "constraints": {
-          "required": false
+          "required": false,
+          "accept": ".rb"
         },
         "options": {
           "uploadMode": "file"
@@ -83,11 +84,11 @@
         "constraints": {
           "allowedValues": [
               {
-                  "label": "Verify None",
+                  "label": "None",
                   "value": "none"
               },
               {
-                  "label": "Verify Peer",
+                  "label": "Peer",
                   "value": "peer"
               }
           ],
@@ -116,6 +117,20 @@
         "options": {
           "uploadMode": "file"
         }
+      },
+      {
+        "name": "chef_server_crt",
+        "type": "Microsoft.Common.FileUpload",
+        "label": "Chef Server SSL Certificate",
+        "tooltip": "When using ssl verification, this will allow you to specify your Chef Server's certificate as trusted",
+        "defaultValue": "",
+        "constraints": {
+          "required": false,
+          "accept": ".pem"
+        },
+        "options": {
+          "uploadMode": "file"
+        }
       }
     ],
     "outputs": {
@@ -130,7 +145,8 @@
       "vmName": "[vmName()]",
       "ssl_verify_mode": "[elements('ssl_verify_mode')]",
       "chef_environment": "[elements('chef_environment')]",
-      "databag_secret": "[elements('databag_secret')]"
+      "databag_secret": "[elements('databag_secret')]",
+      "chef_server_crt": "[elements('chef_server_crt')]"
     }
   }
 }

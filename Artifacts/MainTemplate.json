@@ -40,6 +40,10 @@
     "databag_secret": {
       "type": "securestring",
       "defaultValue": ""
+    },
+    "chef_server_crt": {
+      "type": "securestring",
+      "defaultValue": ""
     }
   },
   "resources": [
@@ -66,7 +70,8 @@
             "client_rb": "[parameters('client_rb')]"
         },
         "protectedSettings": {
-          "validation_key": "[parameters('validation_key')]"
+          "validation_key": "[parameters('validation_key')]",
+          "chef_server_crt": "[parameters('chef_server_crt')]"
         }
       }
     }
