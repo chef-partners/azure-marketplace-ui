@@ -58,7 +58,7 @@
                 "environment": "[parameters('chef_environment')]"
             },
             "runlist": "[parameters('run_list')]",
-            "client_rb": "[(parameters('client_rb')]"
+            "client_rb": "[parameters('client_rb')]"
         },
         "protectedSettings": {
           "validation_key": "[parameters('validation_key')]"
