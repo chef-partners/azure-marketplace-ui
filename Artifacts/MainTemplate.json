@@ -36,6 +36,10 @@
     },
     "chef_environment": {
       "type": "string"
+    },
+    "databag_secret": {
+      "type": "securestring",
+      "defaultValue": ""
     }
   },
   "resources": [
@@ -55,7 +59,8 @@
                 "chef_server_url": "[parameters('chef_server_url')]",
                 "validation_client_name": "[parameters('validation_client_name')]",
                 "node_ssl_verify_mode": "[parameters('ssl_verify_mode')]",
-                "environment": "[parameters('chef_environment')]"
+                "environment": "[parameters('chef_environment')]",
+                "secret": "[parameters('databag_secret')]"
             },
             "runlist": "[parameters('run_list')]",
             "client_rb": "[parameters('client_rb')]"

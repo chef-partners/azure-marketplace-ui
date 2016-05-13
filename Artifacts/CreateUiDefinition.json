@@ -45,7 +45,8 @@
         "label": "Validation Key",
         "toolTip": "The validation key used when bootstrapping your machines",
         "constraints": {
-          "required": true
+          "required": true,
+          "accept": ".pem"
         },
         "options": {
           "uploadMode": "file"
@@ -102,6 +103,19 @@
         "constraints": {
           "required": false
         }
+      },
+      {
+        "name": "databag_secret",
+        "type": "Microsoft.Common.FileUpload",
+        "label": "Encrypted Databag Secret",
+        "tooltip": "Place a secret that will be used to access your encrypted databags",
+        "defaultValue": "",
+        "constraints": {
+          "required": false
+        },
+        "options": {
+          "uploadMode": "file"
+        }
       }
     ],
     "outputs": {
@@ -115,7 +129,8 @@
       "location": "[location()]",
       "vmName": "[vmName()]",
       "ssl_verify_mode": "[elements('ssl_verify_mode')]",
-      "chef_environment": "[elements('chef_environment')]"
+      "chef_environment": "[elements('chef_environment')]",
+      "databag_secret": "[elements('databag_secret')]"
     }
   }
 }
