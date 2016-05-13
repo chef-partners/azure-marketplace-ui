@@ -96,7 +96,8 @@
       {
         "name": "chef_environment",
         "type": "Microsoft.Common.TextBox",
-        "label": "The Chef environment this machine will be placed into",
+        "label": "Chef Environment",
+        "tooltip": "The Chef environment this machine will be placed into",
         "defaultValue": "_default",
         "constraints": {
           "required": false
