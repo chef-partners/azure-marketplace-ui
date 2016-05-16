@@ -45,7 +45,8 @@
         "label": "Validation Key",
         "toolTip": "The validation key used when bootstrapping your machines",
         "constraints": {
-          "required": true
+          "required": true,
+          "accept": ".pem"
         },
         "options": {
           "uploadMode": "file"
@@ -57,7 +58,8 @@
         "label": "Client Configuration File",
         "toolTip": "Configuration file for chef-client",
         "constraints": {
-          "required": false
+          "required": false,
+          "accept": ".rb"
         },
         "options": {
           "uploadMode": "file"
@@ -72,6 +74,63 @@
         "constraints": {
           "required": false
         }
+      },
+      {
+        "name": "ssl_verify_mode",
+        "type": "Microsoft.Common.OptionsGroup",
+        "label": "SSL Verification Mode",
+        "defaultValue": "none",
+        "toolTip": "SSL peer verification during the chef-client run to the Chef server, default is Verify Peer",
+        "constraints": {
+          "allowedValues": [
+              {
+                  "label": "None",
+                  "value": "none"
+              },
+              {
+                  "label": "Peer",
+                  "value": "peer"
+              }
+          ],
+          "required": false
+        }
+      },
+      {
+        "name": "chef_environment",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Chef Environment",
+        "tooltip": "The Chef environment this machine will be placed into",
+        "defaultValue": "_default",
+        "constraints": {
+          "required": false
+        }
+      },
+      {
+        "name": "databag_secret",
+        "type": "Microsoft.Common.FileUpload",
+        "label": "Encrypted Databag Secret",
+        "tooltip": "Place a secret that will be used to access your encrypted databags",
+        "defaultValue": "",
+        "constraints": {
+          "required": false
+        },
+        "options": {
+          "uploadMode": "file"
+        }
+      },
+      {
+        "name": "chef_server_crt",
+        "type": "Microsoft.Common.FileUpload",
+        "label": "Chef Server SSL Certificate",
+        "tooltip": "When using ssl verification, this will allow you to specify your Chef Server's certificate as trusted",
+        "defaultValue": "",
+        "constraints": {
+          "required": false,
+          "accept": ".pem"
+        },
+        "options": {
+          "uploadMode": "file"
+        }
       }
     ],
     "outputs": {
@@ -82,7 +141,12 @@
       "validation_key": "[elements('validation_key')]",
       "client_rb": "[elements('client_rb')]",
       "bootstrap_version": "[elements('bootstrap_version')]",
-      "location": "[location()]"
+      "location": "[location()]",
+      "vmName": "[vmName()]",
+      "ssl_verify_mode": "[elements('ssl_verify_mode')]",
+      "chef_environment": "[elements('chef_environment')]",
+      "databag_secret": "[elements('databag_secret')]",
+      "chef_server_crt": "[elements('chef_server_crt')]"
     }
   }
 }
