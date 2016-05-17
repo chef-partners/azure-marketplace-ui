@@ -1,5 +1,5 @@
 {
-  "displayName": "Linux Chef Extension",
+  "displayName": "<%= @platform.split(' ').select {|w| w.capitalize! || w }.join(' '); %> Chef Extension",
   "publisherDisplayName": "Chef Software Inc.",
   "summary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
   "description": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",

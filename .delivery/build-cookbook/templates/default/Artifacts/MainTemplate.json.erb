@@ -24,10 +24,12 @@
     "location": {
       "type": "string"
     },
+    <% if @platform == 'linux' %>
     "bootstrap_version": {
       "type": "string",
       "defaultValue": ""
     },
+    <% end %>
     "vmName": {
       "type": "string"
     },
@@ -48,16 +50,18 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('vmName'),'/LinuxChefExtension')]",
+      "name": "[concat(parameters('vmName'),'/<%= @details["resource_name"] %>')]",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "location": "[parameters('location')]",
       "apiVersion": "2015-06-15",
       "properties": {
         "publisher": "Chef.Bootstrap.WindowsAzure",
-        "type": "LinuxChefClient",
+        "type": "<%= @details["type"] %>",
         "typeHandlerVersion": "1210.12",
         "settings": {
+            <% if @platform == 'linux' %>
             "bootstrap_version": "[parameters('bootstrap_version')]",
+            <% end %>
             "bootstrap_options": {
                 "chef_node_name": "[parameters('chef_node_name')]",
                 "chef_server_url": "[parameters('chef_server_url')]",

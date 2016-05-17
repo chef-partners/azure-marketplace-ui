@@ -65,6 +65,7 @@
           "uploadMode": "file"
         }
       },
+      <% if @platform == 'linux' %>
       {
         "name": "bootstrap_version",
         "type": "Microsoft.Common.TextBox",
@@ -75,6 +76,7 @@
           "required": false
         }
       },
+      <% end %>
       {
         "name": "ssl_verify_mode",
         "type": "Microsoft.Common.OptionsGroup",
@@ -140,7 +142,9 @@
       "validation_client_name": "[elements('validation_client_name')]",
       "validation_key": "[elements('validation_key')]",
       "client_rb": "[elements('client_rb')]",
+      <% if @platform == 'linux' %>
       "bootstrap_version": "[elements('bootstrap_version')]",
+      <% end %>
       "location": "[location()]",
       "vmName": "[vmName()]",
       "ssl_verify_mode": "[elements('ssl_verify_mode')]",
