@@ -29,12 +29,30 @@
     "bootstrap_version": {
       "type": "string",
       "defaultValue": ""
+    },
+    <% end %>
+    "vmName": {
+      "type": "string"
+    },
+    "ssl_verify_mode": {
+      "type": "string"
+    },
+    "chef_environment": {
+      "type": "string"
+    },
+    "databag_secret": {
+      "type": "securestring",
+      "defaultValue": ""
+    },
+    "chef_server_crt": {
+      "type": "securestring",
+      "defaultValue": ""
     }
     <% end %>
   },
   "resources": [
     {
-      "name": "[concat(parameters('chef_node_name'),'/<%= @details["resource_name"] %>')]",
+      "name": "[concat(parameters('vmName'),'/<%= @details["resource_name"] %>')]",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "location": "[parameters('location')]",
       "apiVersion": "2015-06-15",
@@ -49,13 +67,17 @@
             "bootstrap_options": {
                 "chef_node_name": "[parameters('chef_node_name')]",
                 "chef_server_url": "[parameters('chef_server_url')]",
-                "validation_client_name": "[parameters('validation_client_name')]"
+                "validation_client_name": "[parameters('validation_client_name')]",
+                "node_ssl_verify_mode": "[parameters('ssl_verify_mode')]",
+                "environment": "[parameters('chef_environment')]",
+                "secret": "[parameters('databag_secret')]"
             },
             "runlist": "[parameters('run_list')]",
             "client_rb": "[parameters('client_rb')]"
         },
         "protectedSettings": {
-          "validation_key": "[parameters('validation_key')]"
+          "validation_key": "[parameters('validation_key')]",
+          "chef_server_crt": "[parameters('chef_server_crt')]"
         }
       }
     }

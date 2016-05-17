@@ -4,14 +4,22 @@ default['extension']['platforms']["linux"] = {
   "type" => "LinuxChefClient",
   "resource_name" => "LinuxChefExtension",
   "categories" => ["compute-vmextension-linux"],
-  "filters" => []
+  "filters" => [
+    {
+      "value" => "chef_linuxchefextension"
+    }
+  ]
 }
 
 default['extension']['platforms']["windows"] = {
   "type" => "ChefClient",
   "resource_name" => "WindowsChefExtension",
   "categories" => ["compute-vmextension-windows"],
-  "filters" => []
+  "filters" => [
+    {
+      "value" => "chef_windowschefextension"
+    }
+  ]
 }
 
 # Set the version number of the extension
