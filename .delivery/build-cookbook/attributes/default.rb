@@ -6,7 +6,7 @@ default['extension']['platforms']["linux"] = {
   "categories" => ["compute-vmextension-linux"],
   "filters" => [
     {
-      "type": "HideKey",
+      "type" => "HideKey",
       "value" => "chef_linuxchefextension"
     }
   ]
@@ -18,7 +18,7 @@ default['extension']['platforms']["windows"] = {
   "categories" => ["compute-vmextension-windows"],
   "filters" => [
     {
-      "type": "HideKey",
+      "type" => "HideKey",
       "value" => "chef_windowschefextension"
     }
   ]
