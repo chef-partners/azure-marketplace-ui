@@ -63,6 +63,7 @@ node['extension']['platforms'].each do |platform, details|
     path outputs["manifest"]
     source "Manifest.json.erb"
     variables({
+        "platform" => platform,
         "details" => details
     })
   end
