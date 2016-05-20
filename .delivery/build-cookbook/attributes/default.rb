@@ -5,10 +5,6 @@ default['extension']['platforms']["linux"] = {
   "resource_name" => "LinuxChefExtension",
   "categories" => ["compute-vmextension-linux"],
   "filters" => [
-    {
-      "type" => "HideKey",
-      "value" => "chef_linuxchefextension"
-    }
   ]
 }
 
@@ -17,15 +13,11 @@ default['extension']['platforms']["windows"] = {
   "resource_name" => "WindowsChefExtension",
   "categories" => ["compute-vmextension-windows"],
   "filters" => [
-    {
-      "type" => "HideKey",
-      "value" => "chef_windowschefextension"
-    }
   ]
 }
 
 # Set the version number of the extension
-default['extension']['version'] = "1.0.1"
+default['extension']['version'] = "1.1.0"
 
 # Define the list if icons that need to be written out
 default['extension']['icons'] = [
