@@ -70,9 +70,9 @@ node['extension']['models'].each do |model, info|
     categories = details['categories']
     case model
     when "arm"
-      categories << details['category_name']
+      categories.push(details['category_name'])
     when "classic"
-      categories << info['tag'] + details['category_name'].capitalize
+      categories.push(info['tag'] + details['category_name'].capitalize)
     end
 
     # write out the manifest file
