@@ -67,7 +67,7 @@ node['extension']['models'].each do |model, info|
     # Determine the categories for the model
     # This is based on whatever has been specified in the array as well as the
     # category name
-    case model do
+    case model 
     when "arm"
       categories << details['category_name']
     when "classic"
