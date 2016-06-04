@@ -52,14 +52,19 @@
   "resources": [
     {
       "name": "[concat(parameters('vmName'),'/<%= @details["resource_name"] %>')]",
-      "type": "Microsoft.Compute/virtualMachines/extensions",
+      "type": "<%= @info["type"] %>/virtualMachines/extensions",
       "location": "[parameters('location')]",
-      "apiVersion": "2015-06-15",
+      "apiVersion": "<%= @info["api-version"] %>",
       "properties": {
         "publisher": "Chef.Bootstrap.WindowsAzure",
         "type": "<%= @details["type"] %>",
-        "typeHandlerVersion": "1210.12",
-        "settings": {
+        <% if @model == "arm" %>
+        "typeHandlerVersion": "<%= info["typeHandlerVersion"] %>",
+        "autoUpgradeMinorVersion": <%= info["autoUpgradeMinorVersion"] %>
+        <% else %>
+        "version": "<%= info["version"] %>",
+        <% end %>
+        "<%= info["settings"] %>": {
             <% if @platform == 'linux' %>
             "bootstrap_version": "[parameters('bootstrap_version')]",
             <% end %>
@@ -74,7 +79,7 @@
             "runlist": "[parameters('run_list')]",
             "client_rb": "[parameters('client_rb')]"
         },
-        "protectedSettings": {
+        "<%= info["protected"] %>": {
           "validation_key": "[parameters('validation_key')]",
           "chef_server_crt": "[parameters('chef_server_crt')]"
         }
