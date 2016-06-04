@@ -59,12 +59,12 @@
         "publisher": "Chef.Bootstrap.WindowsAzure",
         "type": "<%= @details["type"] %>",
         <% if @model == "arm" %>
-        "typeHandlerVersion": "<%= info["typeHandlerVersion"] %>",
-        "autoUpgradeMinorVersion": <%= info["autoUpgradeMinorVersion"] %>
+        "typeHandlerVersion": "<%= @info["typeHandlerVersion"] %>",
+        "autoUpgradeMinorVersion": <%= @info["autoUpgradeMinorVersion"] %>
         <% else %>
-        "version": "<%= info["version"] %>",
+        "version": "<%= @info["version"] %>",
         <% end %>
-        "<%= info["settings"] %>": {
+        "<%= @info["settings"] %>": {
             <% if @platform == 'linux' %>
             "bootstrap_version": "[parameters('bootstrap_version')]",
             <% end %>
@@ -79,7 +79,7 @@
             "runlist": "[parameters('run_list')]",
             "client_rb": "[parameters('client_rb')]"
         },
-        "<%= info["protected"] %>": {
+        "<%= @info["protected"] %>": {
           "validation_key": "[parameters('validation_key')]",
           "chef_server_crt": "[parameters('chef_server_crt')]"
         }
