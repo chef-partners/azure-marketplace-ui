@@ -58,4 +58,4 @@ default['extension']['icons'] = [
 ]
 
 # Set the directory for the output
-default['extension']['output']['dir'] = "/tmp"
+default['extension']['output']['dir'] = "/tmp/ui-extension"
