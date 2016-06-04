@@ -3,7 +3,7 @@
 default['extension']['platforms']["linux"] = {
   "type" => "LinuxChefClient",
   "resource_name" => "LinuxChefExtension",
-  "category_name" = "compute-vmextension-linux",
+  "category_name" =>"compute-vmextension-linux",
   "categories" => [],
   "filters" => [
   ]
@@ -12,7 +12,7 @@ default['extension']['platforms']["linux"] = {
 default['extension']['platforms']["windows"] = {
   "type" => "ChefClient",
   "resource_name" => "WindowsChefExtension",
-  "category_name" = "compute-vmextension-windows",
+  "category_name" => "compute-vmextension-windows",
   "categories" => [],
   "filters" => [
   ]
