@@ -60,7 +60,7 @@
         "type": "<%= @details["type"] %>",
         <% if @model == "arm" %>
         "typeHandlerVersion": "<%= @info["typeHandlerVersion"] %>",
-        "autoUpgradeMinorVersion": <%= @info["autoUpgradeMinorVersion"] %>
+        "autoUpgradeMinorVersion": <%= @info["autoUpgradeMinorVersion"] %>,
         <% else %>
         "version": "<%= @info["version"] %>",
         <% end %>
