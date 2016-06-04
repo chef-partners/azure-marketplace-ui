@@ -112,7 +112,7 @@ node['extension']['models'].each do |model, info|
     # Write out the UIDefinition file
     template "#{platform}-uidefinition" do
       path outputs["uidefinition"]
-      source "UIDefinition.json"
+      source "UIDefinition.json.erb"
       variables({
         "extension" => info["extension"]
       })
