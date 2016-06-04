@@ -39,7 +39,7 @@ default['extension']['models'] = {
     "handler" => "Microsoft.ClassicCompute.VmExtension",
     "type" => "Microsoft.ClassicCompute",
     "api-version" => "2015-06-01",
-    "version" => "1*".
+    "version" => "1*",
     "settings" => "parameters.public",
     "protected" => "parameters.private"
   }
