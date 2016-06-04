@@ -122,7 +122,7 @@ node['extension']['models'].each do |model, info|
     # command to make zip file archives out of them
     # generate the output filename
     archive_file_path = File.join(output_dir, "azure-marketplace-ui-#{platform}#{info['suffix']}.#{node['extension']['version']}.zip")
-    bash "#{platform}-zip-archive" do
+    bash "#{platform}-#{model}-zip-archive" do
       cwd output_dir
       code <<-EHO
         zip -9 -r #{archive_file_path} #{platform}
