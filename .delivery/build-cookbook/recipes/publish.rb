@@ -78,6 +78,12 @@ node['extension']['models'].each do |model, info|
     # add the specified categories
     categories += details['categories']
 
+    # Determine the filters that need to be set, if any
+    filters = details['filters']
+    if node['extension']['beta'] == true
+      filters.push(details['beta-filters'])
+    end
+
     # write out the manifest file
     template "manifest" do
       path outputs["manifest"]
@@ -87,7 +93,8 @@ node['extension']['models'].each do |model, info|
           "info" => info,
           "platform" => platform,
           "details" => details,
-          "categories" => categories
+          "categories" => categories,
+          "filters" => filters
       })
     end
 
@@ -105,7 +112,8 @@ node['extension']['models'].each do |model, info|
       source "Strings/Resources.resjson.erb"
       variables({
           "platform" => platform,
-          "version" => node['extension']['version']
+          "version" => node['extension']['version'],
+          "extra" = > node['extension']['beta'] ? " Beta" : ""
       })
     end
 
@@ -121,7 +129,8 @@ node['extension']['models'].each do |model, info|
     # Noe that all the files have been generated for each of the platforms execute the zip
     # command to make zip file archives out of them
     # generate the output filename
-    archive_file_path = File.join(output_dir, "azure-marketplace-ui-#{platform}#{info['suffix']}.#{node['extension']['version']}.zip")
+    archive_file_name = "azure-marketplace-ui-%s%s.%s%s.zip" % [platform, info['suffix'], node['extension']['version'], node['extension']['beta'] ? "-beta" : ""]
+    archive_file_path = File.join(output_dir, archive_file_name)
     bash "#{platform}-#{model}-zip-archive" do
       cwd output_dir
       code <<-EHO

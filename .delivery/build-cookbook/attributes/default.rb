@@ -6,6 +6,12 @@ default['extension']['platforms']["linux"] = {
   "category_name" =>"compute-vmextension-linux",
   "categories" => [],
   "filters" => [
+  ],
+  "beta-filters" => [
+    {
+      "type":"HideKey",
+      "value": "chef_linuxchefextension"
+    }
   ]
 }
 
@@ -15,6 +21,12 @@ default['extension']['platforms']["windows"] = {
   "category_name" => "compute-vmextension-windows",
   "categories" => [],
   "filters" => [
+  ],
+  "beta-filters" => [
+    {
+      "type":"HideKey",
+      "value": "chef_windowschefextension"
+    }
   ]
 }
 
@@ -46,7 +58,10 @@ default['extension']['models'] = {
 }
 
 # Set the version number of the extension
-default['extension']['version'] = "1.2.0"
+default['extension']['version'] = "1.2.1"
+
+# Set the flag to state if this is a beta version, e.g. hidden for testing
+default['extension']['beta'] = true
 
 # Define the list if icons that need to be written out
 default['extension']['icons'] = [
