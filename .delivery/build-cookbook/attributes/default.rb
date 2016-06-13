@@ -9,8 +9,8 @@ default['extension']['platforms']["linux"] = {
   ],
   "beta-filters" => [
     {
-      "type":"HideKey",
-      "value": "chef_linuxchefextension"
+      "type" => "HideKey",
+      "value" => "chef_linuxchefextension"
     }
   ]
 }
@@ -24,8 +24,8 @@ default['extension']['platforms']["windows"] = {
   ],
   "beta-filters" => [
     {
-      "type":"HideKey",
-      "value": "chef_windowschefextension"
+      "type" => "HideKey",
+      "value" => "chef_windowschefextension"
     }
   ]
 }

@@ -3,6 +3,7 @@
 ## 1.2.1
 
 - [Russell Seymour] - Added Beta mode which sets the filters correctly for hiding the extension
+                      Correcting issue that means the runlist cannot be set to nil
 
 
 ## 1.2.0
