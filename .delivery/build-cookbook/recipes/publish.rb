@@ -113,7 +113,7 @@ node['extension']['models'].each do |model, info|
       variables({
           "platform" => platform,
           "version" => node['extension']['version'],
-          "extra" = > node['extension']['beta'] ? " Beta" : ""
+          "extra" => node['extension']['beta'] ? " Beta" : ""
       })
     end
 
