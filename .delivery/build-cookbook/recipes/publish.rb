@@ -76,7 +76,7 @@ node['extension']['models'].each do |model, info|
     end
 
     # add the specified categories
-    categories += details['categories']
+    categories.push(details['categories']).flatten!
 
     # Determine the filters that need to be set, if any
     filters = []
@@ -84,7 +84,7 @@ node['extension']['models'].each do |model, info|
       filters.push(details['beta-filters'])
     end
 
-    filters += details['filters']
+    filters.push(details['filters']).flatten!
 
     # write out the manifest file
     template "manifest" do
