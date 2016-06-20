@@ -58,7 +58,7 @@ default['extension']['models'] = {
 }
 
 # Set the version number of the extension
-default['extension']['version'] = "1.2.2"
+default['extension']['version'] = "1.2.3"
 
 # Set the flag to state if this is a beta version, e.g. hidden for testing
 default['extension']['beta'] = true

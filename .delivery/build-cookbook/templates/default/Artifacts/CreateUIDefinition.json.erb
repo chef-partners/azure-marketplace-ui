@@ -28,8 +28,7 @@
         "toolTip": "The Chef run list that is added to the machine",
         "constraints": {
           "required": false
-        },
-        "defaultValue": ""
+        }
       },
       {
         "name": "validation_client_name",
@@ -82,7 +81,7 @@
         "name": "ssl_verify_mode",
         "type": "Microsoft.Common.OptionsGroup",
         "label": "SSL Verification Mode",
-        "defaultValue": "peer",
+        "defaultValue": "Peer",
         "toolTip": "SSL peer verification during the chef-client run to the Chef server, default is Verify Peer",
         "constraints": {
           "allowedValues": [
@@ -94,8 +93,7 @@
                   "label": "Peer",
                   "value": "peer"
               }
-          ],
-          "required": false
+          ]
         }
       },
       {
