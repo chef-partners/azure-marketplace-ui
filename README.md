@@ -14,6 +14,8 @@ $> delivery job build publish --local
 
 NOTE:  The `delivery-cli` package must be installed for this command to work. (https://docs.chef.io/ctl_delivery.html)
 
+Each run of delivery will generate a `beta` and a `release` version in the outputs directory.  This is so that the a Beta version can be tested and then if that is OK the release version can be deployed *without* requiring another run.
+
 ## Using the Extension
 
 This extension allows `chef-client` to be installed on a virtual machine in Azure using the Azure Portal UI.
@@ -29,7 +31,7 @@ To use the extension it needs to be added to the machine, either as part of its 
 | Validation Key              | The validation private key                                                                            | Yes      |                                               |
 | Client Configuration File   | A valid `client.rb` file with extra settings that need to be applied.  The environment for example    | No       |                                               |
 | Chef Client version         | Version of chef-client to install.  Default is latest.  This *only* applies to Linux machines         | No       |                                               |
-| SSL Verification Mode       | SSL peer verification during the chef-client run to the Chef server, default is Verify Peer           | No       | none                                          |
+| SSL Verification Mode       | SSL peer verification during the chef-client run to the Chef server, default is Verify Peer           | No       | peer                                          |
 | Chef Environment            | The Chef environment this machine will be placed into                                                 | No       | _default                                      |
 | Encrypted Databag Secret    | Place a secret that will be used to access your encrypted databags                                    | No       |                                               |
 | Chef Server SSL Certificate | When using ssl verification, this will allow you to specify your Chef Server's certificate as trusted | No       |                                               |
