@@ -9,10 +9,10 @@ require 'json'
 # Iterate around the models
 node['extension']['models'].each do |model, info|
 
-  working_dir = File.join(node['extension']['output']['dir'], model)
-
   # iterate around the package modes
   node['extension']['modes'].each do |mode|
+
+    working_dir = File.join(node['extension']['output']['dir'], model, mode)
 
     output_dir = File.join(node['extension']['output']['dir'], "outputs", mode)
 
