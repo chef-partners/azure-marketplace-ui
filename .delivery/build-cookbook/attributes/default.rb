@@ -58,13 +58,10 @@ default['extension']['models'] = {
 }
 
 # Set the version number of the extension
-default['extension']['version'] = "1.2.3"
+default['extension']['version'] = "1.2.4"
 
 # Define package modes that state if release or beta
-default["extension"]['modes'] = ["beta", "release"]
-
-# Set the flag to state if this is a beta version, e.g. hidden for testing
-default['extension']['beta'] = true
+default["extension"]['modes'] = ["release"]
 
 # Define the list if icons that need to be written out
 default['extension']['icons'] = [
