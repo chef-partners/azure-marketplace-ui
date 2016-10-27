@@ -74,15 +74,15 @@
                 "chef_server_url": "[parameters('chef_server_url')]",
                 "validation_client_name": "[parameters('validation_client_name')]",
                 "node_ssl_verify_mode": "[parameters('ssl_verify_mode')]",
-                "environment": "[parameters('chef_environment')]",
-                "secret": "[parameters('databag_secret')]"
+                "environment": "[parameters('chef_environment')]"
             },
             "runlist": "[parameters('run_list')]",
             "client_rb": "[parameters('client_rb')]"
         },
         "<%= @info["protected"] %>": {
           "validation_key": "[parameters('validation_key')]",
-          "chef_server_crt": "[parameters('chef_server_crt')]"
+          "chef_server_crt": "[parameters('chef_server_crt')]",
+          "secret": "[parameters('databag_secret')]"
         }
       }
     }
