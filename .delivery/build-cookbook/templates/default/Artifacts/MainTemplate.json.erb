@@ -58,12 +58,13 @@
       "apiVersion": "<%= @info["api-version"] %>",
       "properties": {
         "publisher": "Chef.Bootstrap.WindowsAzure",
-        "type": "<%= @details["type"] %>",
         <% if @model == "arm" %>
+        "type": "<%= @details["type"] %>",
         "typeHandlerVersion": "<%= @info["typeHandlerVersion"] %>",
         "autoUpgradeMinorVersion": <%= @info["autoUpgradeMinorVersion"] %>,
         <% else %>
         "version": "<%= @info["version"] %>",
+        "extension": "<%= @details["type"] %>",
         <% end %>
         "<%= @info["settings"] %>": {
             <% if @platform == 'linux' %>
