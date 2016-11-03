@@ -7,4 +7,5 @@
 # Ensure that the output_dir is empty to clear out previous builds
 directory node['extension']['output']['dir'] do
   action :delete
+  recursive true
 end
