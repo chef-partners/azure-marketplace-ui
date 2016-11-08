@@ -143,9 +143,9 @@ node['extension']['models'].each do |model, info|
       archive_file_name = "azure-marketplace-ui-%s%s.%s%s.zip" % [platform, info['suffix'], node['extension']['version'], mode == "beta" ? "-beta" : ""]
       archive_file_path = File.join(output_dir, archive_file_name)
       bash "#{platform}-#{model}-zip-archive" do
-        cwd working_dir
+        cwd File.join(working_dir, platform)
         code <<-EHO
-          zip -9 -r #{archive_file_path} #{platform}
+          zip -9 -r #{archive_file_path} .
         EHO
       end
     end
