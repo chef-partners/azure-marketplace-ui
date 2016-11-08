@@ -66,7 +66,12 @@
         "version": "<%= @info["version"] %>",
         "extension": "<%= @details["type"] %>",
         <% end %>
-        "<%= @info["settings"] %>": {
+        <% if @model == "arm" %>
+        "settings": {
+        <% else %>
+        "parameters": {
+          "public": {
+        <% end %>
             <% if @platform == 'linux' %>
             "bootstrap_version": "[parameters('bootstrap_version')]",
             <% end %>
@@ -79,12 +84,22 @@
             },
             "runlist": "[parameters('run_list')]",
             "client_rb": "[parameters('client_rb')]"
-        },
-        "<%= @info["protected"] %>": {
+        <% if @model == "arm" %>
+          },
+        "protectedSettings": {
           "validation_key": "[parameters('validation_key')]",
           "chef_server_crt": "[parameters('chef_server_crt')]",
           "secret": "[parameters('databag_secret')]"
         }
+        <% else %>
+          },
+          "private": {
+            "validation_key": "[parameters('validation_key')]",
+            "chef_server_crt": "[parameters('chef_server_crt')]",
+            "secret": "[parameters('databag_secret')]"
+          }
+        }
+        <% end %>
       }
     }
   ]
