@@ -58,7 +58,7 @@ default['extension']['models'] = {
 }
 
 # Set the version number of the extension
-default['extension']['version'] = "1.2.6"
+default['extension']['version'] = "1.2.7"
 
 # Define package modes that state if release or beta
 default["extension"]['modes'] = ["beta"]
