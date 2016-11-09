@@ -51,14 +51,14 @@ default['extension']['models'] = {
     "handler" => "Microsoft.ClassicCompute.VmExtension",
     "type" => "Microsoft.ClassicCompute",
     "api-version" => "2015-06-01",
-    "version" => "1*",
+    "version" => "1210.12.*",
     "settings" => "parameters.public",
     "protected" => "parameters.private"
   }
 }
 
 # Set the version number of the extension
-default['extension']['version'] = "1.2.7"
+default['extension']['version'] = "1.2.8"
 
 # Define package modes that state if release or beta
 default["extension"]['modes'] = ["beta"]
