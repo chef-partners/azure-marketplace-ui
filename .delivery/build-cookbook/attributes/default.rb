@@ -73,4 +73,4 @@ default['extension']['icons'] = [
 ]
 
 # Set the directory for the output
-default['extension']['output']['dir'] = "c:/users/russells/scratch/ui-extension"
+default['extension']['output']['dir'] = "/tmp/ui-extension"
