@@ -1,8 +1,8 @@
 {
   "$schema": "https://gallery.azure.com/schemas/2015-04-01/manifest.json#",
-  "name": "chef-client-<%= @platform %><%= @info['suffix'] %>",
+  "name": "chef-client-{{ platform }}{{ suffix }}",
   "publisher": "chef-software",
-  "version": "<%= node['extension']['version'] %>",
+  "version": "{{ version }}",
   "displayName": "ms-resource:displayName",
   "publisherDisplayName": "ms-resource:publisherDisplayName",
   "publisherLegalName": "ms-resource:publisherDisplayName",
@@ -49,6 +49,6 @@
       "uri": "ms-resource:extsource"
     }
   ],
-  "categories": <%= @categories.to_json %>,
-  "filters": <%= @filters.to_json %>
+  "categories": {{{ categories }}},
+  "filters": {{{ filters }}}
 }

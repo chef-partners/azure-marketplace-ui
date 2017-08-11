@@ -1,0 +1,54 @@
+{
+    "version": "1.3",
+    "platforms": {
+        "linux": {
+            "type": "LinuxChefClient",
+            "resource_name": "LinuxChefExtension",
+            "categories": [],
+            "filters": {
+                "release": [],
+                "beta": [
+                    {
+                        "type": "HideKey",
+                        "value": "chef_linuxchefextension"
+                    }
+                ]
+            }
+        },
+        "windows": {
+            "type": "ChefClient",
+            "resource_name": "WindowsChefExtension",
+            "categories": [],
+            "filters": {
+                "release": [],
+                "beta": [
+                    {
+                        "type": "HideKey",
+                        "value": "chef_windowschefextension"
+                    }
+                ]
+            }
+        }
+    },
+    "models": {
+        "arm": {
+            "extension": "Microsoft_Azure_Compute",
+            "suffix": "-arm",
+            "type": "Microsoft.Compute",
+            "api_version": "2015-06-15",
+            "handler": "Microsoft.Compute.VmExtension",
+
+            "type_handler_version": "1210.12",
+            "auto_upgrade_minor_version": true
+        },
+        "classic": {
+            "extension": "Microsoft_Azure_Classic_Compute",
+            "suffix": "",
+            "type": "Microsoft.ClassicCompute",
+            "api_version": "2015-06-01",
+            "handler": "Microsoft.ClassicCompute.VmExtension",
+
+            "version": "1210.12.*"
+        }
+    }
+}

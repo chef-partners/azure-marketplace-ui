@@ -1,22 +1,12 @@
+
+**Update: 2017-08-11**
+The build process for this repo has been changed from a Delivery cookbook to a NodeJS implementation.
+
 # Azure Marketplace UI Extension
 
-This repo contains a Delivery cookbook that bundles up the Windows and Linux versions of the UI extension.
+This repo contains the definition files for generating the Azure Marketplace UI Extension for Chef. The build process, such that it is, is performed using NodeJS and thus various scripts have been created to assist with the packaging of the extension.
 
-The entire build run is currently configured in `publish.rb`.
-
-The artifacts are, by default, dropped into `/tmp` but this can be modified by changing the the relevant attribute in the cookbook.
-
-As previously mentioned the two archive files are created using a Delivery cookbook.  This means that all the JSON files are now based on templates that are held within the delivery cookbook.  The command to generate them is as follow:
-
-```bash
-$> delivery job build publish --local
-```
-
-NOTE:  The `delivery-cli` package must be installed for this command to work. (https://docs.chef.io/ctl_delivery.html)
-
-Each run of delivery will generate a `beta` and a `release` version in the outputs directory.  This is so that the a Beta version can be tested and then if that is OK the release version can be deployed *without* requiring another run.
-
-## Using the Extension
+# Using the Extension
 
 This extension allows `chef-client` to be installed on a virtual machine in Azure using the Azure Portal UI.
 
@@ -26,6 +16,7 @@ To use the extension it needs to be added to the machine, either as part of its 
 |:----------------------------|:------------------------------------------------------------------------------------------------------|:---------|:----------------------------------------------|
 | Chef Server URL             | URL to the chef server to which the node should register                                              | Yes      | https://api.opscode.com/organizations/example |
 | Chef Node Name              | Name of the node when registered with Chef                                                            | Yes      |                                               |
+| Chef Client version | The version of Chef Client to install. If left blank the latest version is installed. | No | |
 | Run List                    | The run list to apply to the machine after chef-client has been installed                             | No       |                                               |
 | Validation Client Name      | Name of the validation key in the Chef Server organization                                            | Yes      | example-validator                             |
 | Validation Key              | The validation private key                                                                            | Yes      |                                               |
@@ -37,3 +28,62 @@ To use the extension it needs to be added to the machine, either as part of its 
 | Chef Server SSL Certificate | When using ssl verification, this will allow you to specify your Chef Server's certificate as trusted | No       |                                               |
 
 Once all the settings have been configured clicking the 'OK' button at the end of the page will instruct Azure to install `chef-client`.  After a few minutes the machine should show up as a node in the specified chef server.
+
+
+# Build Process
+
+By default the build process will create 4 output archives:
+
+  1. Linux ARM Beta
+  2. Windows ARM Beta
+  3. Linux Classic Beta
+  4. Windows Classic Beta
+
+**NOTE** The Beta just means that the `hidekey` is enabled for the extension. Please see the HideKey section below for more information.
+
+Unfortunately it is not possible to generate a Beta and Release version of the extension at the same time as the version number for each build _has_ to be different. This is a Microsoft restriction.
+
+By default the build scripts will create extensions for both ARM and Classic models in Azure and they will be beta. The following commands will compile the scripts and then use them to create the necessary packages.
+
+```
+npm run build:tasks
+npm run script:build
+npm run script:package
+```
+
+As no arguments have been specified the models and version number will be retrieved from the `config.json` file in the root directory. The default to so create a Beta package. If a specific version is required, e.g. if running in a build service such as VSTS, then the version can be specified as well the model, for example:
+
+```
+npm run build:tasks
+npm run script:build -- -v 2.3 -m arm
+npm run script:package -- -v 2.3 -m arm
+```
+
+The arguments _must_ be specified to both the `build` and `package` calls so that they work in the same properties.
+
+The following table shows the options that can be passed.
+
+| Option | Long Option | Description | Default Value |
+|--------|-------------|-------------|---------------|
+| -v | --version | Version to be applied to the package | Whatever is set in the `config.json` |
+| -t | --types | Whether or not the hidekey will be used, e.g. beta version | beta, release |
+| -d | --directory | Build directory location | &lt;Project Dir&gt;/build |
+| -m | --models | The Azure models to build for | arm, classic |
+
+## Versioning
+
+When the extension is built two versions of the archive file are created. One for the `beta` and one for the `release`. It is expected that the version passed to the script is in the format `<major>.<minor>` and then the `<revision>` will be `0` for beta and `1` for release. This if the version was indeed `2.3` then the following would be the case:
+
+ - Beta - 2.3.0
+ - Release - 2.3.1
+
+ Please note that these are identical apart from the hidekey being removed in the release version.
+
+## Hidekey
+
+When a beta version of the extension is created then the hidekey values, as specified in the `config.json` file, are required when testing the extension in Azure.
+
+| Platform | Default Hidekey Value |
+|----------|-----------------------|
+| Linux | chef_linuxchefextension |
+| Windows | chef_windowschefextension |

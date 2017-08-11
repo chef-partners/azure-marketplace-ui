@@ -1,5 +1,5 @@
 {
-  "handler": "<%= @info['handler'] %>",
+  "handler": "{{ handler }}",
   "version": "0.0.1-preview",
   "parameters": {
     "elements": [
@@ -65,7 +65,6 @@
           "uploadMode": "file"
         }
       },
-      <% if @platform == 'linux' %>
       {
         "name": "bootstrap_version",
         "type": "Microsoft.Common.TextBox",
@@ -76,7 +75,43 @@
           "required": false
         }
       },
-      <% end %>
+      {{#windows}}
+      {
+        "name": "daemon",
+        "type": "Microsoft.Common.OptionsGroup",
+        "label": "Windows Daemon",
+        "defaultValue": "task",
+        "toolTip": "How Chef should run on Windows",
+        "constraints": {
+            "allowedValues": [
+                {
+                    "label": "None",
+                    "value": "none"
+                },
+                {
+                    "label": "Task",
+                    "value": "task"
+                },
+                {
+                    "label": "Service",
+                    "value": "service"
+                }
+            ]
+        }
+      },
+      {{/windows}}
+      {
+        "name": "chef_daemon_interval",
+        "type": "Microsoft.Common.TextBox",
+        "label": "Chef Client Interval",
+        "defaultValue": "30",
+        "toolTip": "Sets how often chef-client will run in minutes. Set to 0 to turn of scheduled runs",
+        "constraints": {
+            "required": false,
+            "regex": "^\\d+$",
+            "validationMessage": "Only numbers are allowed"
+        }
+      },
       {
         "name": "ssl_verify_mode",
         "type": "Microsoft.Common.OptionsGroup",
@@ -141,9 +176,11 @@
       "validation_client_name": "[elements('validation_client_name')]",
       "validation_key": "[elements('validation_key')]",
       "client_rb": "[elements('client_rb')]",
-      <% if @platform == 'linux' %>
       "bootstrap_version": "[elements('bootstrap_version')]",
-      <% end %>
+      {{#windows}}
+      "daemon": "[elements('daemon')]",
+      {{/windows}}
+      "chef_daemon_interval": "[elements('chef_daemon_interval')]",
       "location": "[location()]",
       "vmName": "[vmName()]",
       "ssl_verify_mode": "[elements('ssl_verify_mode')]",

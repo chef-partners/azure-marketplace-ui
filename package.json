@@ -1,0 +1,26 @@
+{
+  "name": "azure-marketplace-chef-ui",
+  "description": "Azure Portal UI Extension for the Chef Extension",
+  "author": "Chef Software, Inc.",
+  "scripts": {
+    "clean": "rimraf build",
+    "build:tasks": "npm run clean && npm run build:tasks:noclean",
+    "build:tasks:noclean": "npm run compile:scripts",
+    "package:tasks": "npm run script:package",
+    "compile:scripts": "tsc --project scripts/tsconfig.json",
+    "script:build": "node scripts/build.js",
+    "script:package": "node scripts/package.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^8.0.20",
+    "change-case": "^3.0.1",
+    "colors": "^1.1.2",
+    "command-line-args": "^4.0.7",
+    "fs-extra": "^4.0.1",
+    "mustache": "^2.3.0",
+    "rimraf": "^2.6.1",
+    "sprintf-js": "^1.1.1",
+    "zip-folder": "^1.0.0"
+  }
+}
