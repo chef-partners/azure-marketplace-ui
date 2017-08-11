@@ -25,12 +25,10 @@
     "location": {
       "type": "string"
     },
-    <% if @platform == 'linux' %>
     "bootstrap_version": {
       "type": "string",
       "defaultValue": ""
     },
-    <% end %>
     "vmName": {
       "type": "string"
     },
@@ -52,29 +50,29 @@
   },
   "resources": [
     {
-      "name": "[concat(parameters('vmName'),'/<%= @details["resource_name"] %>')]",
-      "type": "<%= @info["type"] %>/virtualMachines/extensions",
+      "name": "[concat(parameters('vmName'),'/{{ resource_name }}')]",
+      "type": "{{ resource_type }}/virtualMachines/extensions",
       "location": "[parameters('location')]",
-      "apiVersion": "<%= @info["api-version"] %>",
+      "apiVersion": "{{ api_version }}",
       "properties": {
         "publisher": "Chef.Bootstrap.WindowsAzure",
-        <% if @model == "arm" %>
-        "type": "<%= @details["type"] %>",
-        "typeHandlerVersion": "<%= @info["typeHandlerVersion"] %>",
-        "autoUpgradeMinorVersion": <%= @info["autoUpgradeMinorVersion"] %>,
-        <% else %>
-        "version": "<%= @info["version"] %>",
-        "extension": "<%= @details["type"] %>",
-        <% end %>
-        <% if @model == "arm" %>
+        {{#arm}}
+        "type": "{{ type }}",
+        "typeHandlerVersion": "{{ type_handler_version }}",
+        "autoUpgradeMinorVersion": {{ auto_upgrade_minor_version }},
+        {{/arm}}
+        {{#classic}}
+        "version": "{{ classic_version }}",
+        "extension": "{{ type }}",
+        {{/classic}}
+        {{#arm}}
         "settings": {
-        <% else %>
+        {{/arm}}
+        {{#classic}}
         "parameters": {
           "public": {
-        <% end %>
-            <% if @platform == 'linux' %>
+        {{/classic}}
             "bootstrap_version": "[parameters('bootstrap_version')]",
-            <% end %>
             "bootstrap_options": {
                 "chef_node_name": "[parameters('chef_node_name')]",
                 "chef_server_url": "[parameters('chef_server_url')]",
@@ -84,14 +82,15 @@
             },
             "runlist": "[parameters('run_list')]",
             "client_rb": "[parameters('client_rb')]"
-        <% if @model == "arm" %>
+        {{#arm}}
           },
         "protectedSettings": {
           "validation_key": "[parameters('validation_key')]",
           "chef_server_crt": "[parameters('chef_server_crt')]",
           "secret": "[parameters('databag_secret')]"
         }
-        <% else %>
+        {{/arm}}
+        {{#classic}}
           },
           "private": {
             "validation_key": "[parameters('validation_key')]",
@@ -99,7 +98,7 @@
             "secret": "[parameters('databag_secret')]"
           }
         }
-        <% end %>
+        {{/classic}}
       }
     }
   ]
