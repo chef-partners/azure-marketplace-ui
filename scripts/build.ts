@@ -136,7 +136,8 @@ for (let model of options["models"]) {
                 api_version: config["models"][model]["api_version"],
                 arm: model == "arm",
                 classic: model == "classic",
-                type: config["platforms"][platform]["type"]
+                type: config["platforms"][platform]["type"],
+                windows: platform == "windows"
             }
 
             // Add specific items depdening on the model
@@ -154,7 +155,8 @@ for (let model of options["models"]) {
             // Create UI Definition file
             console.log(colors.yellow("        Artifacts/CreateUIDefinition.json"))
             replacements = {
-                handler: config["models"][model]["handler"]
+                handler: config["models"][model]["handler"],
+                windows: platform == "windows"
             }
             let artifacts_createuidefinition = Mustache.render(template["artifacts"]["createuidefinition"], replacements)
             fs.writeFileSync(path.join(platform_dir, "Artifacts", "CreateUIDefinition.json"), artifacts_createuidefinition)

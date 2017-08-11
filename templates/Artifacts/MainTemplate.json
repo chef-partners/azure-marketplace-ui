@@ -29,6 +29,16 @@
       "type": "string",
       "defaultValue": ""
     },
+    {{#windows}}
+    "daemon": {
+        "type": "string",
+        "defaultValue": ""
+    },
+    {{/windows}}
+    "chef_daemon_interval": {
+        "type": "string",
+        "defaultValue": ""
+    },
     "vmName": {
       "type": "string"
     },
@@ -72,6 +82,10 @@
         "parameters": {
           "public": {
         {{/classic}}
+            {{#windows}}
+            "daemon": "[parameters('daemon')]",
+            {{/windows}}
+            "chef_daemon_interval": "[parameters('chef_daemon_interval')]",
             "bootstrap_version": "[parameters('bootstrap_version')]",
             "bootstrap_options": {
                 "chef_node_name": "[parameters('chef_node_name')]",
