@@ -1,5 +1,5 @@
 {
-  "displayName": "{{ platform }} Chef Extension ({{ version }}{{ extra }})",
+  "displayName": "Chef Extension ({{ version }}{{ extra }} {{ platform }})",
   "publisherDisplayName": "Chef Software Inc.",
   "summary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
   "description": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",

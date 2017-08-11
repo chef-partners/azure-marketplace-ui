@@ -55,8 +55,8 @@ As no arguments have been specified the models and version number will be retrie
 
 ```
 npm run build:tasks
-npm run script:build -- -v 2.3.4 -m arm
-npm run script:package -- -v 2.3.4 -m arm
+npm run script:build -- -v 2.3 -m arm
+npm run script:package -- -v 2.3 -m arm
 ```
 
 The arguments _must_ be specified to both the `build` and `package` calls so that they work in the same properties.
@@ -66,9 +66,18 @@ The following table shows the options that can be passed.
 | Option | Long Option | Description | Default Value |
 |--------|-------------|-------------|---------------|
 | -v | --version | Version to be applied to the package | Whatever is set in the `config.json` |
-| -t | --type | Whether or not the hidekey will be used, e.g. beta version | beta |
+| -t | --types | Whether or not the hidekey will be used, e.g. beta version | beta, release |
 | -d | --directory | Build directory location | &lt;Project Dir&gt;/build |
 | -m | --models | The Azure models to build for | arm, classic |
+
+## Versioning
+
+When the extension is built two versions of the archive file are created. One for the `beta` and one for the `release`. It is expected that the version passed to the script is in the format `<major>.<minor>` and then the `<revision>` will be `0` for beta and `1` for release. This if the version was indeed `2.3` then the following would be the case:
+
+ - Beta - 2.3.0
+ - Release - 2.3.1
+
+ Please note that these are identical apart from the hidekey being removed in the release version.
 
 ## Hidekey
 

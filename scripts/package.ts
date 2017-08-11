@@ -17,13 +17,13 @@ const optionDefinitions = [
         name: 'version', alias: 'v', type: String, defaultValue: config["version"]
     },
     {
-        name: 'type', alias: 't', type: String, defaultValue: "beta"
+        name: 'types', alias: 't', type: String, multiple: true, defaultValue: ["beta", "release"]
     },
     {
         name: 'directory', alias: 'd', type: String, defaultValue: path.join(config["paths"]["basedir"], "build")
     },
     {
-        name: 'models', alias: 'm', type: String, multiple: true, defaultValue: ["arm", "classic"]
+        name: 'models', alias: 'm', type: String, multiple: true, defaultValue: ["arm"]
     }
 ]
 
@@ -35,27 +35,37 @@ for (let model of options["models"]) {
 
     let model_dir = path.join(options["directory"], model)
 
-    // iterate around the platforms
-    for (let platform in config["platforms"]) {
+    // iterate around the release types
+    for (let type of options["types"]) {
 
-        // Determine the platform dir
-        let platform_dir = path.join(model_dir, platform)
+        // Create the directory for the type
+        let type_dir = path.join(model_dir, type)
 
-        // Determine the zip filename
-        let filename_parts = [
-            platform,
-            config["models"][model]["suffix"],
-            options["version"],
-            options["type"] == "beta" ? "-beta" : ""
-        ]
-        let zip_filename = path.join(options["directory"], vsprintf("azure-marketplace-ui-%s%s.%s%s.zip", filename_parts))
-        
-        zipFolder(platform_dir, zip_filename, function(err) {
-            if (err) {
-                console.log(colors.red("  FAILED"), err)
-            } else {
-                console.log(colors.green("  SUCCESS: %s"), zip_filename)
-            }
-        })
+        let version = common.getVersion(options["version"], type)
+
+        // iterate around the platforms
+        for (let platform in config["platforms"]) {
+
+            // Determine the platform dir
+            let platform_dir = path.join(type_dir, platform)
+
+            // Determine the zip filename
+            let filename_parts = [
+                platform,
+                config["models"][model]["suffix"],
+                version,
+                type == "beta" ? "-beta" : ""
+            ]
+            let zip_filename = path.join(options["directory"], vsprintf("azure-marketplace-ui-%s%s.%s%s.zip", filename_parts))
+            
+            zipFolder(platform_dir, zip_filename, function(err) {
+                if (err) {
+                    console.log(colors.red("  FAILED"), err)
+                } else {
+                    console.log(colors.green("  SUCCESS: %s"), zip_filename)
+                }
+            })
+        }
+
     }
 }
