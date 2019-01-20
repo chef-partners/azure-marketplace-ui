@@ -16,10 +16,11 @@
         "name": "chef_node_name",
         "type": "Microsoft.Common.TextBox",
         "label": "Chef Node Name",
-        "toolTip": "The Chef Node name",
+        "toolTip": "Node name for identification in the Chef server. If not specified the hostname will be used.",
         "constraints": {
-          "required": true
-        }
+          "required": false
+        },
+        "defaultValue": ""
       },
       {
         "name": "run_list",

@@ -58,6 +58,24 @@
       "defaultValue": ""
     }
   },
+  "variables": {
+    "bootstrap_options": "[if(empty(parameters('chef_node_name')), variables('bootstrap_options_no_node_name'), variables('bootstrap_options_with_node_name'))]",
+
+    "bootstrap_options_with_node_name": {
+      "chef_node_name": "[parameters('chef_node_name')]",
+      "chef_server_url": "[parameters('chef_server_url')]",
+      "validation_client_name": "[parameters('validation_client_name')]",
+      "node_ssl_verify_mode": "[parameters('ssl_verify_mode')]",
+      "environment": "[parameters('chef_environment')]"      
+    },
+
+    "bootstrap_options_no_node_name": {
+      "chef_server_url": "[parameters('chef_server_url')]",
+      "validation_client_name": "[parameters('validation_client_name')]",
+      "node_ssl_verify_mode": "[parameters('ssl_verify_mode')]",
+      "environment": "[parameters('chef_environment')]"
+    }
+  },
   "resources": [
     {
       "name": "[concat(parameters('vmName'),'/{{ resource_name }}')]",
@@ -87,13 +105,7 @@
             {{/windows}}
             "chef_daemon_interval": "[parameters('chef_daemon_interval')]",
             "bootstrap_version": "[parameters('bootstrap_version')]",
-            "bootstrap_options": {
-                "chef_node_name": "[parameters('chef_node_name')]",
-                "chef_server_url": "[parameters('chef_server_url')]",
-                "validation_client_name": "[parameters('validation_client_name')]",
-                "node_ssl_verify_mode": "[parameters('ssl_verify_mode')]",
-                "environment": "[parameters('chef_environment')]"
-            },
+            "bootstrap_options": "[variables('bootstrap_options')]",
             "runlist": "[parameters('run_list')]",
             "client_rb": "[parameters('client_rb')]"
         {{#arm}}
