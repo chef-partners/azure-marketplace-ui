@@ -1,4 +1,4 @@
-name: 1.4$(Rev.r)
+name: 1.4$(Rev:.r)
 
 stages:
 - stage: Build
@@ -38,7 +38,7 @@ stages:
       inputs:
         command: custom
         verbose: false
-        customerCommand: run script:package
+        customCommand: run script:package
 
     - task: CopyFiles@2
       displayName: Copy Zip files to artefact directory
