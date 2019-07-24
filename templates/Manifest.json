@@ -3,12 +3,12 @@
   "name": "chef-client-{{ platform }}{{ suffix }}",
   "publisher": "chef-software",
   "version": "{{ version }}",
-  "displayName": "Chef Extension ({{ version }}{{ extra }} {{ platform }})",
+  "displayName": "Chef Extension - {{ platform }}",
   "publisherDisplayName": "Chef Software Inc.",
   "publisherLegalName": "Chef Software Inc.",
   "summary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
-  "longSummary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
-  "description": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "longSummary": "{{ version }}{{ extra }}\r\nInstall the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "description": "{{ version }}{{ extra }}\r\nInstall the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
   "uiDefinition": {
     "path": "UiDefinition.json"
   },
@@ -42,7 +42,7 @@
     },
     {
       "displayName": "Learn Chef",
-      "uri": "https://learnchef.com"
+      "uri": "https://learn.chef.io"
     },
     {
       "displayName": "Extension Source",
