@@ -53,10 +53,11 @@ for (let model of options["models"]) {
             let filename_parts = [
                 platform,
                 config["models"][model]["suffix"],
+                process.env.BUILD_SOURCEBRANCHNAME ? process.env.BUILD_SOURCEBRANCHNAME : "local",
                 version,
                 type == "beta" ? "-beta" : ""
             ]
-            let zip_filename = path.join(options["directory"], vsprintf("azure-marketplace-ui-%s%s.%s%s.zip", filename_parts))
+            let zip_filename = path.join(options["directory"], vsprintf("azure-marketplace-ui-%s%s-%s.%s%s.zip", filename_parts))
             
             zipper(platform_dir, zip_filename)
                 .then(() => {
