@@ -3,12 +3,12 @@
   "name": "chef-client-{{ platform }}{{ suffix }}",
   "publisher": "chef-software",
   "version": "{{ version }}",
-  "displayName": "ms-resource:displayName",
-  "publisherDisplayName": "ms-resource:publisherDisplayName",
-  "publisherLegalName": "ms-resource:publisherDisplayName",
-  "summary": "ms-resource:summary",
-  "longSummary": "ms-resource:description",
-  "description": "ms-resource:description",
+  "displayName": "Chef Extension ({{ version }}{{ extra }} {{ platform }})",
+  "publisherDisplayName": "Chef Software Inc.",
+  "publisherLegalName": "Chef Software Inc.",
+  "summary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "longSummary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "description": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
   "uiDefinition": {
     "path": "UiDefinition.json"
   },
@@ -38,15 +38,15 @@
   "links": [
     {
       "displayName": "Chef Software",
-      "uri": "ms-resource:siteurl"
+      "uri": "https://chef.io"
     },
     {
       "displayName": "Learn Chef",
-      "uri": "ms-resource:learnchef"
+      "uri": "https://learnchef.com"
     },
     {
       "displayName": "Extension Source",
-      "uri": "ms-resource:extsource"
+      "uri": "https://github.com/chef-partners/azure-chef-extension"
     }
   ],
   "categories": {{{ categories }}},

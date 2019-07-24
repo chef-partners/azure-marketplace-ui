@@ -1,0 +1,54 @@
+name: 1.4$(Rev.r)
+
+stages:
+- stage: Build
+  displayName: Build Stage
+
+
+  jobs:
+  - job: Build
+    displayName: Create UI Extension Package
+    pool:
+      name: Hosted
+
+    steps:
+
+    - task: Npm@1
+      displayName: Install Modules
+      inputs:
+        command: install
+        verbose: false
+
+    - task: Npm@1
+      displayName: Compile Build Scripts
+      inputs:
+        command: custom
+        verbose: false
+        customCommand: run compile:scripts
+
+    - task: Npm@1
+      displayName: Gather up extension files
+      inputs:
+        command: custom
+        verbose: false
+        customCommand: run script:build
+
+    - task: Npm@1
+      displayName: Create Zip files
+      inputs:
+        command: custom
+        verbose: false
+        customerCommand: run script:package
+
+    - task: CopyFiles@2
+      displayName: Copy Zip files to artefact directory
+      inputs:
+        SourceFolder: $(build.sourcesdirectory)/build
+        Contents: '*.zip'
+        TargetFolder: $(build.artifactstagingdirectory)
+
+    - task: PublishBuildArtifacts@1
+      displayName: "Publish Artifact: Upload zip files"
+      inputs:
+        PathToPublish: $(build.artifactstagingdirectory)
+        ArtifactName: zipfiles
