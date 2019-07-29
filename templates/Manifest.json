@@ -3,7 +3,7 @@
   "name": "chef-client-{{ platform }}{{ suffix }}",
   "publisher": "chef-software",
   "version": "{{ version }}",
-  "displayName": "Chef VM extension for {{ platform }}",
+  "displayName": "Chef VM Extension for {{ platform }}",
   "publisherDisplayName": "Chef Software Inc.",
   "publisherLegalName": "Chef Software Inc.",
   "summary": "Install the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server",
