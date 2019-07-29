@@ -3,12 +3,12 @@
   "name": "chef-client-{{ platform }}{{ suffix }}",
   "publisher": "chef-software",
   "version": "{{ version }}",
-  "displayName": "Chef Extension - {{ platform }}",
+  "displayName": "Chef VM extension for {{ platform }}",
   "publisherDisplayName": "Chef Software Inc.",
   "publisherLegalName": "Chef Software Inc.",
-  "summary": "Install the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
-  "longSummary": "{{ version }}{{ extra }}\r\nInstall the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
-  "description": "{{ version }}{{ extra }}\r\nInstall the Chef Client on your Virtual Machine and bootstrap to your Chef Server",
+  "summary": "Install the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server",
+  "longSummary": "{{ version }}{{ extra }}\r\nInstall the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server",
+  "description": "{{ version }}{{ extra }}\r\nInstall the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server",
   "uiDefinition": {
     "path": "UiDefinition.json"
   },
