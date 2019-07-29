@@ -1,6 +1,5 @@
 
-**Update: 2017-08-11**
-The build process for this repo has been changed from a Delivery cookbook to a NodeJS implementation.
+[![Build Status](https://dev.azure.com/chefcorp-partnerengineering/azure-marketplace-ui-chef-extension/_apis/build/status/chef-partners.azure-marketplace-ui?branchName=master)](https://dev.azure.com/chefcorp-partnerengineering/azure-marketplace-ui-chef-extension/_build/latest?definitionId=58&branchName=master)
 
 # Azure Marketplace UI Extension
 

@@ -5,7 +5,7 @@ import * as common from "./common.js"
 import * as commandLineArgs from "command-line-args"
 import * as colors from "colors/safe"
 import * as path from "path"
-import * as zipFolder from "zip-folder"
+import * as zipper from "folder-zipper"
 import {vsprintf} from "sprintf-js"
 
 // Read in the configuration file
@@ -41,7 +41,7 @@ for (let model of options["models"]) {
         // Create the directory for the type
         let type_dir = path.join(model_dir, type)
 
-        let version = common.getVersion(options["version"], type)
+        let version = options["version"]; //common.getVersion(options["version"], type)
 
         // iterate around the platforms
         for (let platform in config["platforms"]) {
@@ -53,18 +53,19 @@ for (let model of options["models"]) {
             let filename_parts = [
                 platform,
                 config["models"][model]["suffix"],
+                process.env.BUILD_SOURCEBRANCHNAME ? process.env.BUILD_SOURCEBRANCHNAME : "local",
                 version,
                 type == "beta" ? "-beta" : ""
             ]
-            let zip_filename = path.join(options["directory"], vsprintf("azure-marketplace-ui-%s%s.%s%s.zip", filename_parts))
+            let zip_filename = path.join(options["directory"], vsprintf("azure-marketplace-ui-%s%s-%s.%s%s.zip", filename_parts))
             
-            zipFolder(platform_dir, zip_filename, function(err) {
-                if (err) {
-                    console.log(colors.red("  FAILED"), err)
-                } else {
+            zipper(platform_dir, zip_filename)
+                .then(() => {
                     console.log(colors.green("  SUCCESS: %s"), zip_filename)
-                }
-            })
+                })
+                .catch(err => {
+                    console.log(colors.red("  FAILED"), err)
+                })
         }
 
     }

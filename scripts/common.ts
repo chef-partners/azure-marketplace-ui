@@ -19,6 +19,11 @@ export function getConfig() {
         basedir: basedir
     }
 
+    // Set the version based on environment variable
+    if (process.env.BUILD_BUILDNUMBER ) {
+        config["version"] = process.env.BUILD_BUILDNUMBER;
+    }
+
     // Return the configuration
     return config
 }

@@ -43,9 +43,6 @@ if (!fs.existsSync(options["directory"])) {
 let template = {
     "ui_definition": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "UIDefinition.json"), "utf-8"),
     "manifest": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "Manifest.json"), "utf-8"),
-    "strings": {
-        "resources": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "Strings", "Resources.resjson"), "utf-8")
-    },
     "artifacts": {
         "maintemplate": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "Artifacts", "MainTemplate.json"), "utf-8"),
         "createuidefinition": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "Artifacts", "CreateUIDefinition.json"), "utf-8")
@@ -76,7 +73,7 @@ for (let model of options["models"]) {
             fs.mkdirSync(type_dir)
         }
 
-        let version = common.getVersion(options["version"], type)
+        let version = options["version"]; // common.getVersion(options["version"], type)
         console.log(colors.green("    Type: %s (%s)"), type, version)
 
         // Iterate around the platforms
@@ -113,20 +110,11 @@ for (let model of options["models"]) {
                 suffix: config["models"][model]["suffix"],
                 version: version,
                 categories: JSON.stringify(config["platforms"][platform]["categories"]),
-                filters: JSON.stringify(config["platforms"][platform]["filters"][type])
+                filters: JSON.stringify(config["platforms"][platform]["filters"][type]),
+                extra: type == "beta" ? " Beta" : ""
             }
             let manifest = Mustache.render(template["manifest"], replacements)
             fs.writeFileSync(path.join(platform_dir, "Manifest.json"), manifest)
-
-            // Strings resource file
-            console.log(colors.yellow("        Strings/Resources.resjson"))
-            replacements = {
-                platform: changeCase.titleCase(platform),
-                version: version,
-                extra: type == "beta" ? " Beta" : ""
-            }
-            let strings_resources = Mustache.render(template["strings"]["resources"], replacements)
-            fs.writeFileSync(path.join(platform_dir, "Strings", "Resources.resjson"), strings_resources)
 
             // MainTemplate file
             console.log(colors.yellow("        Artifacts/MainTemplate.json"))
