@@ -1,0 +1,4 @@
+{
+  "description": "{{ version }}{{ extra }}\r\nInstall the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server",
+  "longSummary": "{{ version }}{{ extra }}\r\nInstall the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server"
+}

@@ -7,8 +7,8 @@
   "publisherDisplayName": "Chef Software Inc.",
   "publisherLegalName": "Chef Software Inc.",
   "summary": "Install the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server",
-  "longSummary": "{{ version }}{{ extra }}\r\nInstall the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server",
-  "description": "{{ version }}{{ extra }}\r\nInstall the Chef Infra Client on your Virtual Machine and bootstrap to your Chef Server",
+  "longSummary": "ms-resource:longSummary",
+  "description": "ms-resource:description",
   "uiDefinition": {
     "path": "UiDefinition.json"
   },

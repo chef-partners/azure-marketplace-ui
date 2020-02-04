@@ -43,6 +43,7 @@ if (!fs.existsSync(options["directory"])) {
 let template = {
     "ui_definition": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "UIDefinition.json"), "utf-8"),
     "manifest": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "Manifest.json"), "utf-8"),
+    "resources_file": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "Strings", "Resources.resjson"), "utf-8"),
     "artifacts": {
         "maintemplate": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "Artifacts", "MainTemplate.json"), "utf-8"),
         "createuidefinition": fs.readFileSync(path.join(config["paths"]["basedir"], "templates", "Artifacts", "CreateUIDefinition.json"), "utf-8")
@@ -115,6 +116,15 @@ for (let model of options["models"]) {
             }
             let manifest = Mustache.render(template["manifest"], replacements)
             fs.writeFileSync(path.join(platform_dir, "Manifest.json"), manifest)
+
+            // Resources file
+            console.log(colors.yellow("        Strings/Resources.resjson"))
+            replacements = {
+                version: version,
+                extra: type == "beta" ? " Beta" : ""
+            }
+            let resources_file = Mustache.render(template["resources_file"], replacements)
+            fs.writeFileSync(path.join(platform_dir, "Strings", "Resources.resjson"), resources_file)
 
             // MainTemplate file
             console.log(colors.yellow("        Artifacts/MainTemplate.json"))
