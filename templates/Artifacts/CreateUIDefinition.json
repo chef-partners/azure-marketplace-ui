@@ -1,192 +1,207 @@
 {
+  "$schema": "https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json#",
   "handler": "{{ handler }}",
-  "version": "0.0.1-preview",
+  "version": "0.1.2-preview",
   "parameters": {
-    "elements": [
+    "basics": [
+      {}
+    ],
+    "steps": [
       {
-        "name": "chef_server_url",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Chef Server URL",
-        "toolTip": "The Chef Server URL that includes the organization name",
-        "constraints": {
-          "required": true
-        }
-      },
-      {
-        "name": "chef_node_name",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Chef Node Name",
-        "toolTip": "The Chef Node name",
-        "constraints": {
-          "required": true
-        }
-      },
-      {
-        "name": "run_list",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Run List",
-        "toolTip": "The Chef run list that is added to the machine",
-        "constraints": {
-          "required": false
-        }
-      },
-      {
-        "name": "validation_client_name",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Validation Client Name",
-        "toolTip": "Validation Client Name",
-        "constraints": {
-          "required": true
-        }
-      },
-      {
-        "name": "validation_key",
-        "type": "Microsoft.Common.FileUpload",
-        "label": "Validation Key",
-        "toolTip": "The validation key used when bootstrapping your machines",
-        "constraints": {
-          "required": true,
-          "accept": ".pem"
+        "name": "chefInfraConfiguration",
+        "label": "Chef-Infra Configuration",
+        "bladeTitle": "Configuration",
+        "subLabel": {
+          "preValidation": "Provide settings for Chef-Infra for this node",
+          "postValidation": "Chef-Infra settings updated"
         },
-        "options": {
-          "uploadMode": "file"
-        }
-      },
-      {
-        "name": "client_rb",
-        "type": "Microsoft.Common.FileUpload",
-        "label": "Client Configuration File",
-        "toolTip": "Configuration file for chef-client",
-        "constraints": {
-          "required": false,
-          "accept": ".rb"
-        },
-        "options": {
-          "uploadMode": "file"
-        }
-      },
-      {
-        "name": "bootstrap_version",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Chef Client version",
-        "defaultValue": "",
-        "toolTip": "Version of chef client to install.  Leave blank to install latest.",
-        "constraints": {
-          "required": false
-        }
-      },
-      {{#windows}}
-      {
-        "name": "daemon",
-        "type": "Microsoft.Common.OptionsGroup",
-        "label": "Windows Daemon",
-        "defaultValue": "task",
-        "toolTip": "How Chef should run on Windows",
-        "constraints": {
-            "allowedValues": [
-                {
-                    "label": "None",
-                    "value": "none"
-                },
-                {
-                    "label": "Task",
-                    "value": "task"
-                },
-                {
-                    "label": "Service",
-                    "value": "service"
-                }
-            ]
-        }
-      },
-      {{/windows}}
-      {
-        "name": "chef_daemon_interval",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Chef Client Interval",
-        "defaultValue": "30",
-        "toolTip": "Sets how often chef-client will run in minutes. Set to 0 to turn of scheduled runs",
-        "constraints": {
-            "required": false,
-            "regex": "^\\d+$",
-            "validationMessage": "Only numbers are allowed"
-        }
-      },
-      {
-        "name": "ssl_verify_mode",
-        "type": "Microsoft.Common.OptionsGroup",
-        "label": "SSL Verification Mode",
-        "defaultValue": "Peer",
-        "toolTip": "SSL peer verification during the chef-client run to the Chef server, default is Verify Peer",
-        "constraints": {
-          "allowedValues": [
-              {
-                  "label": "None",
-                  "value": "none"
-              },
-              {
-                  "label": "Peer",
-                  "value": "peer"
-              }
-          ]
-        }
-      },
-      {
-        "name": "chef_environment",
-        "type": "Microsoft.Common.TextBox",
-        "label": "Chef Environment",
-        "tooltip": "The Chef environment this machine will be placed into",
-        "defaultValue": "_default",
-        "constraints": {
-          "required": false
-        }
-      },
-      {
-        "name": "databag_secret",
-        "type": "Microsoft.Common.FileUpload",
-        "label": "Encrypted Databag Secret",
-        "tooltip": "Place a secret that will be used to access your encrypted databags",
-        "defaultValue": "",
-        "constraints": {
-          "required": false
-        },
-        "options": {
-          "uploadMode": "file"
-        }
-      },
-      {
-        "name": "chef_server_crt",
-        "type": "Microsoft.Common.FileUpload",
-        "label": "Chef Server SSL Certificate",
-        "tooltip": "When using ssl verification, this will allow you to specify your Chef Server's certificate as trusted",
-        "defaultValue": "",
-        "constraints": {
-          "required": false,
-          "accept": ".pem"
-        },
-        "options": {
-          "uploadMode": "file"
-        }
+        "elements": [
+          {
+            "name": "chef_server_url",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Chef Server URL",
+            "toolTip": "The Chef Server URL that includes the organization name",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "chef_node_name",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Chef Node Name",
+            "toolTip": "The Chef Node name",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "run_list",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Run List",
+            "toolTip": "The Chef run list that is added to the machine",
+            "constraints": {
+              "required": false
+            }
+          },
+          {
+            "name": "validation_client_name",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Validation Client Name",
+            "toolTip": "Validation Client Name",
+            "constraints": {
+              "required": true
+            }
+          },
+          {
+            "name": "validation_key",
+            "type": "Microsoft.Common.FileUpload",
+            "label": "Validation Key",
+            "toolTip": "The validation key used when bootstrapping your machines",
+            "constraints": {
+              "required": true,
+              "accept": ".pem"
+            },
+            "options": {
+              "uploadMode": "file"
+            }
+          },
+          {
+            "name": "client_rb",
+            "type": "Microsoft.Common.FileUpload",
+            "label": "Client Configuration File",
+            "toolTip": "Configuration file for chef-client",
+            "constraints": {
+              "required": false,
+              "accept": ".rb"
+            },
+            "options": {
+              "uploadMode": "file"
+            }
+          },
+          {
+            "name": "bootstrap_version",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Chef Client version",
+            "defaultValue": "",
+            "toolTip": "Version of chef client to install.  Leave blank to install latest.",
+            "constraints": {
+              "required": false
+            }
+          },
+          {{#windows}}
+          {
+            "name": "daemon",
+            "type": "Microsoft.Common.OptionsGroup",
+            "label": "Windows Daemon",
+            "defaultValue": "task",
+            "toolTip": "How Chef should run on Windows",
+            "constraints": {
+                "allowedValues": [
+                    {
+                        "label": "None",
+                        "value": "none"
+                    },
+                    {
+                        "label": "Task",
+                        "value": "task"
+                    },
+                    {
+                        "label": "Service",
+                        "value": "service"
+                    }
+                ]
+            }
+          },
+          {{/windows}}
+          {
+            "name": "chef_daemon_interval",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Chef Client Interval",
+            "defaultValue": "30",
+            "toolTip": "Sets how often chef-client will run in minutes. Set to 0 to turn of scheduled runs",
+            "constraints": {
+                "required": false,
+                "regex": "^\\d+$",
+                "validationMessage": "Only numbers are allowed"
+            }
+          },
+          {
+            "name": "ssl_verify_mode",
+            "type": "Microsoft.Common.OptionsGroup",
+            "label": "SSL Verification Mode",
+            "defaultValue": "Peer",
+            "toolTip": "SSL peer verification during the chef-client run to the Chef server, default is Verify Peer",
+            "constraints": {
+              "allowedValues": [
+                  {
+                      "label": "None",
+                      "value": "none"
+                  },
+                  {
+                      "label": "Peer",
+                      "value": "peer"
+                  }
+              ]
+            }
+          },
+          {
+            "name": "chef_environment",
+            "type": "Microsoft.Common.TextBox",
+            "label": "Chef Environment",
+            "tooltip": "The Chef environment this machine will be placed into",
+            "defaultValue": "_default",
+            "constraints": {
+              "required": false
+            }
+          },
+          {
+            "name": "databag_secret",
+            "type": "Microsoft.Common.FileUpload",
+            "label": "Encrypted Databag Secret",
+            "tooltip": "Place a secret that will be used to access your encrypted databags",
+            "defaultValue": "",
+            "constraints": {
+              "required": false
+            },
+            "options": {
+              "uploadMode": "file"
+            }
+          },
+          {
+            "name": "chef_server_crt",
+            "type": "Microsoft.Common.FileUpload",
+            "label": "Chef Server SSL Certificate",
+            "tooltip": "When using ssl verification, this will allow you to specify your Chef Server's certificate as trusted",
+            "defaultValue": "",
+            "constraints": {
+              "required": false,
+              "accept": ".pem"
+            },
+            "options": {
+              "uploadMode": "file"
+            }
+          }
+        ]
       }
     ],
     "outputs": {
-      "chef_server_url": "[elements('chef_server_url')]",
-      "chef_node_name": "[elements('chef_node_name')]",
-      "run_list": "[elements('run_list')]",
-      "validation_client_name": "[elements('validation_client_name')]",
-      "validation_key": "[elements('validation_key')]",
-      "client_rb": "[elements('client_rb')]",
-      "bootstrap_version": "[elements('bootstrap_version')]",
+      "chef_server_url": "[steps('chefInfraConfiguration).chef_server_url]",
+      "chef_node_name": "[steps('chefInfraConfiguration).chef_node_name]",
+      "run_list": "[steps('chefInfraConfiguration).run_list]",
+      "validation_client_name": "[steps('chefInfraConfiguration).validation_client_name]",
+      "validation_key": "[steps('chefInfraConfiguration).validation_key]",
+      "client_rb": "[steps('chefInfraConfiguration).client_rb]",
+      "bootstrap_version": "[steps('chefInfraConfiguration).bootstrap_version]",
       {{#windows}}
-      "daemon": "[elements('daemon')]",
+      "daemon": "[steps('chefInfraConfiguration).daemon]",
       {{/windows}}
-      "chef_daemon_interval": "[elements('chef_daemon_interval')]",
+      "chef_daemon_interval": "[steps('chefInfraConfiguration).chef_daemon_interval]",
       "location": "[location()]",
       "vmName": "[vmName()]",
-      "ssl_verify_mode": "[elements('ssl_verify_mode')]",
-      "chef_environment": "[elements('chef_environment')]",
-      "databag_secret": "[elements('databag_secret')]",
-      "chef_server_crt": "[elements('chef_server_crt')]"
+      "ssl_verify_mode": "[steps('chefInfraConfiguration).ssl_verify_mode]",
+      "chef_environment": "[steps('chefInfraConfiguration).chef_environment]",
+      "databag_secret": "[steps('chefInfraConfiguration).databag_secret]",
+      "chef_server_crt": "[steps('chefInfraConfiguration).chef_server_crt]"
     }
   }
 }

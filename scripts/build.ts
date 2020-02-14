@@ -108,6 +108,7 @@ for (let model of options["models"]) {
             console.log(colors.yellow("        Manifest.json"))
             replacements = {
                 platform: platform,
+                platformDisplay: changeCase.titleCase(platform),
                 suffix: config["models"][model]["suffix"],
                 version: version,
                 categories: JSON.stringify(config["platforms"][platform]["categories"]),

@@ -36,7 +36,7 @@
             "suffix": "-arm",
             "type": "Microsoft.Compute",
             "api_version": "2015-06-15",
-            "handler": "Microsoft.Compute.VmExtension",
+            "handler": "Microsoft.Compute.MultiVm",
 
             "type_handler_version": "1210.12",
             "auto_upgrade_minor_version": true
