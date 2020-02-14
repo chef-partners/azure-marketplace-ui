@@ -185,23 +185,23 @@
       }
     ],
     "outputs": {
-      "chef_server_url": "[steps('chefInfraConfiguration).chef_server_url]",
-      "chef_node_name": "[steps('chefInfraConfiguration).chef_node_name]",
-      "run_list": "[steps('chefInfraConfiguration).run_list]",
-      "validation_client_name": "[steps('chefInfraConfiguration).validation_client_name]",
-      "validation_key": "[steps('chefInfraConfiguration).validation_key]",
-      "client_rb": "[steps('chefInfraConfiguration).client_rb]",
-      "bootstrap_version": "[steps('chefInfraConfiguration).bootstrap_version]",
+      "chef_server_url": "[steps('chefInfraConfiguration').chef_server_url]",
+      "chef_node_name": "[steps('chefInfraConfiguration').chef_node_name]",
+      "run_list": "[steps('chefInfraConfiguration').run_list]",
+      "validation_client_name": "[steps('chefInfraConfiguration').validation_client_name]",
+      "validation_key": "[steps('chefInfraConfiguration').validation_key]",
+      "client_rb": "[steps('chefInfraConfiguration').client_rb]",
+      "bootstrap_version": "[steps('chefInfraConfiguration').bootstrap_version]",
       {{#windows}}
-      "daemon": "[steps('chefInfraConfiguration).daemon]",
+      "daemon": "[steps('chefInfraConfiguration').daemon]",
       {{/windows}}
-      "chef_daemon_interval": "[steps('chefInfraConfiguration).chef_daemon_interval]",
+      "chef_daemon_interval": "[steps('chefInfraConfiguration').chef_daemon_interval]",
       "location": "[location()]",
       "vmName": "[vmName()]",
-      "ssl_verify_mode": "[steps('chefInfraConfiguration).ssl_verify_mode]",
-      "chef_environment": "[steps('chefInfraConfiguration).chef_environment]",
-      "databag_secret": "[steps('chefInfraConfiguration).databag_secret]",
-      "chef_server_crt": "[steps('chefInfraConfiguration).chef_server_crt]"
+      "ssl_verify_mode": "[steps('chefInfraConfiguration').ssl_verify_mode]",
+      "chef_environment": "[steps('chefInfraConfiguration').chef_environment]",
+      "databag_secret": "[steps('chefInfraConfiguration').databag_secret]",
+      "chef_server_crt": "[steps('chefInfraConfiguration').chef_server_crt]"
     }
   }
 }
