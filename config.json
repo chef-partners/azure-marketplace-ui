@@ -4,7 +4,9 @@
         "linux": {
             "type": "LinuxChefClient",
             "resource_name": "LinuxChefExtension",
-            "categories": [],
+            "categories": [
+                "compute-vmextension-linux"
+            ],
             "filters": {
                 "release": [],
                 "beta": [
@@ -18,7 +20,9 @@
         "windows": {
             "type": "ChefClient",
             "resource_name": "WindowsChefExtension",
-            "categories": [],
+            "categories": [
+                "compute-vmextension-windows"
+            ],
             "filters": {
                 "release": [],
                 "beta": [
